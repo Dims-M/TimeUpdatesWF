@@ -32,7 +32,6 @@
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btExit = new System.Windows.Forms.Button();
             this.btSave = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.btStart = new System.Windows.Forms.Button();
@@ -82,16 +81,6 @@
             this.btSave.Text = "Сохранить настройки";
             this.btSave.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(364, 217);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.MenuBar;
@@ -121,9 +110,9 @@
             // 
             // btStart
             // 
-            this.btStart.Location = new System.Drawing.Point(16, 78);
+            this.btStart.Location = new System.Drawing.Point(16, 62);
             this.btStart.Name = "btStart";
-            this.btStart.Size = new System.Drawing.Size(75, 23);
+            this.btStart.Size = new System.Drawing.Size(75, 39);
             this.btStart.TabIndex = 1;
             this.btStart.Text = "Запустить";
             this.btStart.UseVisualStyleBackColor = true;
@@ -131,9 +120,9 @@
             // 
             // btStop
             // 
-            this.btStop.Location = new System.Drawing.Point(135, 78);
+            this.btStop.Location = new System.Drawing.Point(135, 62);
             this.btStop.Name = "btStop";
-            this.btStop.Size = new System.Drawing.Size(75, 23);
+            this.btStop.Size = new System.Drawing.Size(75, 39);
             this.btStop.TabIndex = 2;
             this.btStop.Text = "Остановить";
             this.btStop.UseVisualStyleBackColor = true;
@@ -141,9 +130,9 @@
             // 
             // btRelod
             // 
-            this.btRelod.Location = new System.Drawing.Point(250, 78);
+            this.btRelod.Location = new System.Drawing.Point(250, 62);
             this.btRelod.Name = "btRelod";
-            this.btRelod.Size = new System.Drawing.Size(98, 23);
+            this.btRelod.Size = new System.Drawing.Size(98, 39);
             this.btRelod.TabIndex = 3;
             this.btRelod.Text = "Перезапустить";
             this.btRelod.UseVisualStyleBackColor = true;
@@ -178,7 +167,6 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(12, 50);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -217,7 +205,6 @@
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.Button btExit;
         private System.Windows.Forms.Button btSave;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.CheckBox checkBoxAvtoStart;
         private System.Windows.Forms.Label label2;
