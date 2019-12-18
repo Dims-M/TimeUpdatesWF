@@ -26,9 +26,9 @@ namespace TimeUpdatesWF.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("60")]
-        public string MinuteDef {
+        public int MinuteDef {
             get {
-                return ((string)(this["MinuteDef"]));
+                return ((int)(this["MinuteDef"]));
             }
             set {
                 this["MinuteDef"] = value;

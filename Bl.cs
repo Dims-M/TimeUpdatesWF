@@ -16,7 +16,7 @@ namespace TimeUpdatesWF
         // Сделать автозагрузку времени из прпиртес, работающий устанвщик минут
 
             private const string myServise = "W32Time";
-            private int UpdatesMinute = 60;
+            private int UpdatesMinute = 10;
 
             // Запуск службы
             public void StartService(string serviceName = myServise)

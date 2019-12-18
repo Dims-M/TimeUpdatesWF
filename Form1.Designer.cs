@@ -81,6 +81,7 @@
             this.btSave.TabIndex = 3;
             this.btSave.Text = "Сохранить настройки";
             this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
             // tabPage1
             // 
@@ -125,6 +126,11 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(273, 137);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
             this.numericUpDown1.TabIndex = 4;
