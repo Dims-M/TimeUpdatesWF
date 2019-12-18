@@ -78,7 +78,9 @@ namespace TimeUpdatesWF
             //if ()
             //{
             servis = new Bl();
-            servis.WrateText("Ntcnnnnn");
+           // servis.WrateText("Ntcnnnnn"); // запись ntrcnjdjuj текста 
+
+            servis.testVrema();
             //}
             Properties.Settings.Default.MinuteDef = (int)numericUpDown1.Value;
             Properties.Settings.Default.Save();

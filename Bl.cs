@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.ServiceProcess;
@@ -208,6 +209,18 @@ namespace TimeUpdatesWF
                 sw.WriteLine(DateTime.Now + "\t\n" + myText); // запись
 
             }
+        }
+
+
+        public void testVrema()
+        {
+            Process p = new Process();
+            p.StartInfo.Arguments = "/resync";
+            p.StartInfo.CreateNoWindow = true;
+            p.StartInfo.FileName = "w32tm.exe";
+            p.StartInfo.UseShellExecute = false;
+            p.Start();
+            p.WaitForExit();
         }
 
         //запись в файл
