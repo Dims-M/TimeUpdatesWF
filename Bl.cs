@@ -5,10 +5,13 @@ using System.IO;
 using System.Linq;
 using System.ServiceProcess;
 using System.Text;
+using System.Threading;
+//using System.Windows;
+using System.Windows.Forms;
 
 namespace TimeUpdatesWF
 {
-  public  class Bl
+    public class Bl
     {
         /// <summary>
         /// Класс для работы с логикой
@@ -17,14 +20,16 @@ namespace TimeUpdatesWF
         // //План
         // Сделать автозагрузку времени из прпиртес, работающий устанвщик минут
 
-            private const string myServise = "W32Time";
-            private int UpdatesMinute = 10;
-            string tempLog = "";
+        private const string myServise = "W32Time";
+        private static int UpdatesMinute = 1;
+        string tempLog = "";
 
-            // Запуск службы
-            public void StartService(string serviceName = myServise)
-            {
-                ServiceController service = new ServiceController(serviceName);
+        
+
+        // Запуск службы
+        public void StartService(string serviceName = myServise)
+        {
+            ServiceController service = new ServiceController(serviceName);
 
             try
             {
@@ -51,10 +56,10 @@ namespace TimeUpdatesWF
         }
 
 
-            // Останавливаем службу
-            public void StopService(string serviceName = myServise)
-            {
-                ServiceController service = new ServiceController(serviceName);
+        // Останавливаем службу
+        public void StopService(string serviceName = myServise)
+        {
+            ServiceController service = new ServiceController(serviceName);
             try
             {
                 // Если служба не остановлена
@@ -77,11 +82,11 @@ namespace TimeUpdatesWF
         }
 
 
-            // Перезапуск службы
-            public void RestartService(string serviceName = myServise)
-            {
-                ServiceController service = new ServiceController(serviceName);
-                TimeSpan timeout = TimeSpan.FromMinutes(UpdatesMinute);
+        // Перезапуск службы
+        public void RestartService(string serviceName = myServise)
+        {
+            ServiceController service = new ServiceController(serviceName);
+            TimeSpan timeout = TimeSpan.FromMinutes(UpdatesMinute);
 
             try
             {
@@ -110,19 +115,19 @@ namespace TimeUpdatesWF
         }
 
         //Иницализация минут по умолчанию
-            public bool InitMinutes(int myMinutes)
-            {
-                UpdatesMinute = myMinutes;
-                // RestartService(myServise, myMinutes);
-                return true;
-            }
+        public bool InitMinutes(int myMinutes)
+        {
+            UpdatesMinute = myMinutes;
+            // RestartService(myServise, myMinutes);
+            return true;
+        }
 
         //Получеение минут по имолчанию
-            public int GettMinutes(int myMinutes)
-            {
+        public int GettMinutes(int myMinutes)
+        {
 
-                return UpdatesMinute;
-            }
+            return UpdatesMinute;
+        }
 
 
         /// <summary>
@@ -139,7 +144,7 @@ namespace TimeUpdatesWF
             //string a = "~runme.lnk"; GetProcesses.exe
             string a = "GetProcesses.lnk";
             //string b = @"C:\EoU\"; myPachDir
-           // string b = myPachDirFileApp;// + "GetProcesses\\";
+            // string b = myPachDirFileApp;// + "GetProcesses\\";
             string c = s3;
 
             try
@@ -156,7 +161,7 @@ namespace TimeUpdatesWF
                     //  File.Delete(c + a);
                     #endregion
 
-                  //  System.IO.File.Copy(b + a, c + a);
+                    //  System.IO.File.Copy(b + a, c + a);
                     //File.Copy(@"C:\EoU\~runme", patchStartup);
                     WrateText("Копирование ярлыка завершено!!");
                 }
@@ -202,7 +207,7 @@ namespace TimeUpdatesWF
 
             }
 
-            using (StreamWriter sw = new StreamWriter($"{tempPathDir}"+@"\Log.txt", true, System.Text.Encoding.Default))
+            using (StreamWriter sw = new StreamWriter($"{tempPathDir}" + @"\Log.txt", true, System.Text.Encoding.Default))
 
             // using (StreamWriter sw = new StreamWriter(myPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
             {
@@ -211,17 +216,53 @@ namespace TimeUpdatesWF
             }
         }
 
-
-        public void testVrema()
+        public  void Cikle()
         {
-            Process p = new Process();
-            p.StartInfo.Arguments = "/resync";
-            p.StartInfo.CreateNoWindow = true;
-            p.StartInfo.FileName = "w32tm.exe";
-            p.StartInfo.UseShellExecute = false;
-            p.Start();
-            p.WaitForExit();
+        //    int a = 0;
+        //    while (true)
+        //    {
+                Thread myThread = new Thread(new ThreadStart(TimeSynchronization));
+               // a++;
+           // }
+        // создаем новый поток
+         
+        //    Thread.Sleep(8000);
+        //    //await Task.Run(() => TimeSynchronization());
         }
+
+
+        public static void TimeSynchronization()
+        {
+            int a = 0;
+            // bool temp = cikle;
+            while (true)
+            {
+                //if (temp== true)
+                //{
+
+               //Thread.Sleep(UpdatesMinute * 100);
+               
+                Process p = new Process();
+                p.StartInfo.Arguments = "/resync";
+                p.StartInfo.CreateNoWindow = true;
+                p.StartInfo.FileName = "w32tm.exe";
+                p.StartInfo.UseShellExecute = false;
+                p.Start();
+                p.WaitForExit();
+               Thread.Sleep(1000);
+               
+                //if (a == 12345)
+                //{
+                //    MessageBox.Show("csdfvsdvd");
+                //    break;
+                //}
+                //   // break;
+
+                a++;
+            }
+        }
+
+    
 
         //запись в файл
         /// <summary>

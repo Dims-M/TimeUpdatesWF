@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace TimeUpdatesWF
@@ -70,6 +71,19 @@ namespace TimeUpdatesWF
             servis.InitMinutes(jj); // загружаем минуты обновлениц
 
             numericUpDown1.Value = jj;
+           
+           // servis.Cikle(); //  запуск метода в новм потоке
+            tyutyu();
+        }
+
+
+        private void tyutyu()
+        {
+            servis = new Bl();
+
+            Thread myThread = new Thread(new ThreadStart(Bl.TimeSynchronization));
+
+           // servis.TimeSynchronization();
         }
 
         //Сохранить настройки
@@ -78,9 +92,9 @@ namespace TimeUpdatesWF
             //if ()
             //{
             servis = new Bl();
-           // servis.WrateText("Ntcnnnnn"); // запись ntrcnjdjuj текста 
+            // servis.WrateText("Ntcnnnnn"); // запись ntrcnjdjuj текста 
 
-            servis.testVrema();
+           // servis.TimeSynchronization();
             //}
             Properties.Settings.Default.MinuteDef = (int)numericUpDown1.Value;
             Properties.Settings.Default.Save();
