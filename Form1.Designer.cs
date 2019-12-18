@@ -33,13 +33,13 @@
             this.btExit = new System.Windows.Forms.Button();
             this.btSave = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btStart = new System.Windows.Forms.Button();
-            this.btStop = new System.Windows.Forms.Button();
-            this.btRelod = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
             this.checkBoxAvtoStart = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.btRelod = new System.Windows.Forms.Button();
+            this.btStop = new System.Windows.Forms.Button();
+            this.btStart = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.menuStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -71,6 +71,7 @@
             this.btExit.TabIndex = 2;
             this.btExit.Text = "Выход";
             this.btExit.UseVisualStyleBackColor = true;
+            this.btExit.Click += new System.EventHandler(this.btExit_Click);
             // 
             // btSave
             // 
@@ -99,24 +100,45 @@
             this.tabPage1.Text = "Автообновление времени";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // label1
+            // checkBoxAvtoStart
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(112, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Синхронизация времени";
+            this.checkBoxAvtoStart.AutoSize = true;
+            this.checkBoxAvtoStart.Checked = true;
+            this.checkBoxAvtoStart.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxAvtoStart.Location = new System.Drawing.Point(16, 137);
+            this.checkBoxAvtoStart.Name = "checkBoxAvtoStart";
+            this.checkBoxAvtoStart.Size = new System.Drawing.Size(127, 17);
+            this.checkBoxAvtoStart.TabIndex = 6;
+            this.checkBoxAvtoStart.Text = "Автозапуск службы";
+            this.checkBoxAvtoStart.UseVisualStyleBackColor = true;
+            this.checkBoxAvtoStart.CheckedChanged += new System.EventHandler(this.checkBoxAvtoStart_CheckedChanged);
             // 
-            // btStart
+            // label2
             // 
-            this.btStart.Location = new System.Drawing.Point(16, 62);
-            this.btStart.Name = "btStart";
-            this.btStart.Size = new System.Drawing.Size(75, 39);
-            this.btStart.TabIndex = 1;
-            this.btStart.Text = "Запустить";
-            this.btStart.UseVisualStyleBackColor = true;
-            this.btStart.Click += new System.EventHandler(this.button3_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(225, 121);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(136, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Время обновления (Мин.)";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(273, 137);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
+            this.numericUpDown1.TabIndex = 4;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btRelod
+            // 
+            this.btRelod.Location = new System.Drawing.Point(250, 62);
+            this.btRelod.Name = "btRelod";
+            this.btRelod.Size = new System.Drawing.Size(98, 39);
+            this.btRelod.TabIndex = 3;
+            this.btRelod.Text = "Перезапустить";
+            this.btRelod.UseVisualStyleBackColor = true;
+            this.btRelod.Click += new System.EventHandler(this.btRelod_Click);
             // 
             // btStop
             // 
@@ -128,41 +150,24 @@
             this.btStop.UseVisualStyleBackColor = true;
             this.btStop.Click += new System.EventHandler(this.button4_Click);
             // 
-            // btRelod
+            // btStart
             // 
-            this.btRelod.Location = new System.Drawing.Point(250, 62);
-            this.btRelod.Name = "btRelod";
-            this.btRelod.Size = new System.Drawing.Size(98, 39);
-            this.btRelod.TabIndex = 3;
-            this.btRelod.Text = "Перезапустить";
-            this.btRelod.UseVisualStyleBackColor = true;
+            this.btStart.Location = new System.Drawing.Point(16, 62);
+            this.btStart.Name = "btStart";
+            this.btStart.Size = new System.Drawing.Size(75, 39);
+            this.btStart.TabIndex = 1;
+            this.btStart.Text = "Запустить";
+            this.btStart.UseVisualStyleBackColor = true;
+            this.btStart.Click += new System.EventHandler(this.button3_Click);
             // 
-            // numericUpDown1
+            // label1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(273, 137);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
-            this.numericUpDown1.TabIndex = 4;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(225, 121);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Время обновления (Мин.)";
-            // 
-            // checkBoxAvtoStart
-            // 
-            this.checkBoxAvtoStart.AutoSize = true;
-            this.checkBoxAvtoStart.Location = new System.Drawing.Point(16, 137);
-            this.checkBoxAvtoStart.Name = "checkBoxAvtoStart";
-            this.checkBoxAvtoStart.Size = new System.Drawing.Size(127, 17);
-            this.checkBoxAvtoStart.TabIndex = 6;
-            this.checkBoxAvtoStart.Text = "Автозапуск службы";
-            this.checkBoxAvtoStart.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(112, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Синхронизация времени";
             // 
             // tabControl1
             // 
@@ -188,6 +193,7 @@
             this.MinimumSize = new System.Drawing.Size(398, 380);
             this.Name = "Form1";
             this.Text = "Автообновление времени";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabPage1.ResumeLayout(false);

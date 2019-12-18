@@ -83,6 +83,7 @@ namespace TimeUpdatesWF
                 }
             }
 
+        //Иницализация минут по умолчанию
             public bool InitMinutes(int myMinutes)
             {
                 UpdatesMinute = myMinutes;
@@ -90,6 +91,7 @@ namespace TimeUpdatesWF
                 return true;
             }
 
+        //Получеение минут по имолчанию
             public int GettMinutes(int myMinutes)
             {
 
