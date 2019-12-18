@@ -21,10 +21,10 @@ namespace TimeUpdatesWF
         // Сделать автозагрузку времени из прпиртес, работающий устанвщик минут
 
         private const string myServise = "W32Time";
-        private static int UpdatesMinute = 1;
+        private static int UpdatesMinute = 60;
         string tempLog = "";
 
-        
+      public static  Thread myThread = new Thread(new ParameterizedThreadStart(TimeSynchronization));
 
         // Запуск службы
         public void StartService(string serviceName = myServise)
@@ -216,32 +216,25 @@ namespace TimeUpdatesWF
             }
         }
 
-        public  void Cikle()
+        public  void Cikle(bool z)
         {
-        //    int a = 0;
-        //    while (true)
-        //    {
-                Thread myThread = new Thread(new ThreadStart(TimeSynchronization));
-               // a++;
-           // }
-        // создаем новый поток
-         
-        //    Thread.Sleep(8000);
-        //    //await Task.Run(() => TimeSynchronization());
+        
+            
+           myThread.Start(z); // запускаем поток
+            
+          
+           
         }
 
 
-        public static void TimeSynchronization()
+        public static void TimeSynchronization(object xx)
         {
+           // CancellationTokenSource token = new CancellationTokenSource(); // nht,etn 4.3
             int a = 0;
             // bool temp = cikle;
+          //  Thread.Sleep(UpdatesMinute * 1000);
             while (true)
             {
-                //if (temp== true)
-                //{
-
-               //Thread.Sleep(UpdatesMinute * 100);
-               
                 Process p = new Process();
                 p.StartInfo.Arguments = "/resync";
                 p.StartInfo.CreateNoWindow = true;
@@ -249,17 +242,22 @@ namespace TimeUpdatesWF
                 p.StartInfo.UseShellExecute = false;
                 p.Start();
                 p.WaitForExit();
-               Thread.Sleep(1000);
+                Thread.Sleep(UpdatesMinute * 60000);
+               
+                continue;
+               // break;
+                //Thread.Sleep(UpdatesMinute * 1000);
                
                 //if (a == 12345)
                 //{
-                //    MessageBox.Show("csdfvsdvd");
+                 //  MessageBox.Show($"{UpdatesMinute * 1000}");
                 //    break;
                 //}
                 //   // break;
 
                 a++;
             }
+            MessageBox.Show($"{UpdatesMinute * 1000}");
         }
 
     

@@ -48,7 +48,10 @@ namespace TimeUpdatesWF
         //Выход
         private void btExit_Click(object sender, EventArgs e)
         {
+            // servis.Cikle(false); //  запуск метода в новм потоке
+            Bl.myThread.Abort();
             Close();
+            Application.Exit();
         }
 
         //Перезапуск
@@ -72,7 +75,7 @@ namespace TimeUpdatesWF
 
             numericUpDown1.Value = jj;
            
-           // servis.Cikle(); //  запуск метода в новм потоке
+            servis.Cikle(true); //  запуск метода в новм потоке
             tyutyu();
         }
 
@@ -81,9 +84,9 @@ namespace TimeUpdatesWF
         {
             servis = new Bl();
 
-            Thread myThread = new Thread(new ThreadStart(Bl.TimeSynchronization));
-
-           // servis.TimeSynchronization();
+           // Thread myThread = new Thread(new ThreadStart(Bl.TimeSynchronization));
+           // myThread.Start(); // запускаем поток
+            // servis.TimeSynchronization();
         }
 
         //Сохранить настройки
@@ -98,6 +101,14 @@ namespace TimeUpdatesWF
             //}
             Properties.Settings.Default.MinuteDef = (int)numericUpDown1.Value;
             Properties.Settings.Default.Save();
+        }
+
+        //При закрытии формы
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Bl.myThread.Abort();
+            Application.Exit();
+            // servis.Cikle(false); //  запуск метода в новм потоке
         }
     }
 }
