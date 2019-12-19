@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading;
@@ -320,6 +321,39 @@ namespace TimeUpdatesWF
                 continue;
             }
           
+        }
+
+        //Тестовой метод проверки обновления
+        public bool check()
+        {
+           // VersionChecker verChecker = new VersionChecker();
+            string s = "";
+            string localVersion = "";
+            try
+            {
+                while (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable()) //ждем пока подрубимся к сети
+                {
+                    System.Threading.Thread.Sleep(60000);
+                }
+                localVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); //получение версии запущенной программы
+                WebClient w = new WebClient();
+                s = w.DownloadString("http:// domen.ru/version.txt");
+                w.Dispose();
+            }
+            catch (Exception ex)
+            {
+               // errors(ex.Message);
+            }
+            string[] q = s.Split(‘|’); // у меня в файле указана не только версия, но и адрес для загрузки последней версии программы через знак ‘|’
+            //if (verChecker.NewVersionExists(localVersion, q[0])) // отправляем две версии другому методу для их сверки
+            //{
+            //    load_obnovlenie(q[1]); //версия старая и запускаем метод по обновлению нашей программы(будет в следующей статье)
+            //}
+            else
+            {
+                return false; //версия новая
+            }
+            return true; //даем знать основной команде, которая вызвала метод, что мол, есть обнова и лучше нам пока не начинать работать
         }
 
     }
