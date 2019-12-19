@@ -20,6 +20,9 @@ namespace TimeUpdatesWF
 
             this.ShowInTaskbar = true;
             notifyIcon1.Click += notifyIcon1_Click;
+            this.WindowState = FormWindowState.Minimized; // форма при запуске свернута
+            this.ShowInTaskbar = false; //скрываем форму из раб панельки
+
         }
 
 
@@ -114,6 +117,7 @@ namespace TimeUpdatesWF
         //При закрытии формы
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            notifyIcon1.Visible = false;
             Bl.myThread.Abort();
             Application.Exit();
             
@@ -121,8 +125,21 @@ namespace TimeUpdatesWF
 
         void notifyIcon1_Click(object sender, EventArgs e)
         {
-           // this.WindowState = FormWindowState.Normal;
-            this.WindowState = FormWindowState.Minimized;
+            this.WindowState = FormWindowState.Normal;
+           // this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                MessageBox.Show("hhhhh");
+                //обрабатываем щелчок левой
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                //обрабатываем щелчок правой
+            }
         }
 
         public void TestVariable()
