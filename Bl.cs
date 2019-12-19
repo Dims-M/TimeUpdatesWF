@@ -16,10 +16,7 @@ namespace TimeUpdatesWF
         /// <summary>
         /// Класс для работы с логикой
         /// </summary>
-        // https://www.youtube.com/watch?v=Ier5xem-TTA&list=PL0lO_mIqDDFWOMqSKFaLypANf1W7-o87q&index=5&t=594s
-        // //План
-        // Сделать автозагрузку времени из прпиртес, работающий устанвщик минут
-
+       
         private const string myServise = "W32Time";
         private static int UpdatesMinute = 60;
         string tempLog = "";
@@ -223,19 +220,20 @@ namespace TimeUpdatesWF
         public void CopyLinkAppStartup(bool swixh)
         {
             String s3 = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
-            s3 += "\\";
+            string pathApp = Application.StartupPath;
+           // s3 += "\\";
             //WrateText("Строка подключения \n" + s3);
             // MessageBox.Show(s3);
 
             //string a = "~runme.lnk"; GetProcesses.exe
-            string a = "GetProcesses.lnk";
+            string a = @"\TimeUpdatesWF.exe";
             //string b = @"C:\EoU\"; myPachDir
-            // string b = myPachDirFileApp;// + "GetProcesses\\";
+             string b = pathApp; // + "GetProcesses\\";
             string c = s3;
 
             try
             {
-                if (swixh)
+                if (swixh!=false)
                 {
                     #region НЕ смотреть
                     // var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
@@ -247,7 +245,7 @@ namespace TimeUpdatesWF
                     //  File.Delete(c + a);
                     #endregion
 
-                    //  System.IO.File.Copy(b + a, c + a);
+                    System.IO.File.Copy(b + a, c + a);
                     //File.Copy(@"C:\EoU\~runme", patchStartup);
                     WrateText("Копирование ярлыка завершено!!");
                 }

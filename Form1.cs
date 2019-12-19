@@ -30,7 +30,8 @@ namespace TimeUpdatesWF
         {
             servis = new Bl();
             servis.StartService();
-          //  servis.TestStart(); // тестовой метод
+            //  servis.TestStart(); // тестовой метод
+            
         }
 
         //Остановить
@@ -43,7 +44,23 @@ namespace TimeUpdatesWF
         //Выбор автозапуска
         private void checkBoxAvtoStart_CheckedChanged(object sender, EventArgs e)
         {
-            
+            servis = new Bl();
+            //servis.CopyLinkAppStartup(true);
+
+            CheckBox checkBox = (CheckBox)sender; // приводим отправителя к элементу типа CheckBox
+
+            if (checkBox.Checked == true)
+            {
+                servis.CopyLinkAppStartup(true);
+            }
+            else
+            {
+
+                servis.CopyLinkAppStartup(false);
+
+
+            }
+
         }
 
         //Выход
