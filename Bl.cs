@@ -24,7 +24,7 @@ namespace TimeUpdatesWF
         private static int UpdatesMinute = 60;
         string tempLog = "";
 
-      public static  Thread myThread = new Thread(new ParameterizedThreadStart(TimeSynchronization));
+      public static  Thread myThread = new Thread(new ThreadStart(TimeSynchronization));
 
         // Запуск службы
         public void StartService(string serviceName = myServise)
@@ -37,24 +37,100 @@ namespace TimeUpdatesWF
                 // Проверяем не запущена ли служба
                 if (service.Status != ServiceControllerStatus.Running)
                 {
+                   
                     // Запускаем службу
                     service.Start();
+                   
                     // В течении минуты ждём статус от службы
                     service.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromMinutes(1));
                     // Console.WriteLine("Служба была успешно запущена!");
                 }
+
+                else if (service.Status != ServiceControllerStatus.Stopped)
+                {
+                   // service.Continue();
+                }
+
                 else
                 {
                     // Console.WriteLine("Служба уже запущена!");
                 }
 
-            }
+                
+
+                }
             catch (Exception ex)
             {
                 tempLog = $"Произошла ошибка при запуске службы \t\n{ex}";
+                WrateText(tempLog);
+
+            }
+            finally
+            {
+                service.Dispose();
             }
         }
 
+        #region Тестовой метод
+        public void TestStart()
+        {
+
+            //int exitCode;
+
+            //using (var process = new Process())
+            //{
+            //    var startInfo = process.StartInfo;
+            //    startInfo.FileName = "W32Time";
+            //    startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
+            //    startInfo.Arguments = string.Format("failure \"{0}\" reset= 0 actions= restart/5000", "W32Time");
+
+            //    process.Start();
+            //    process.WaitForExit();
+
+            //    exitCode = process.ExitCode;
+
+            //    process.Close();
+            //}
+
+            //if (exitCode != 0)
+            //    throw new InvalidOperationException();
+
+            //using (var serviceController = new ServiceController(myServise))
+            //{
+            //   // serviceController.Start();
+            //    serviceController.WaitForStatus(ServiceControllerStatus.Running);
+            //    serviceController.Start();
+            //}
+
+
+            //  System.Diagnostics.ProcessStartInfo processInfo = new System.Diagnostics.ProcessStartInfo();
+            //  // processInfo.FileName = myServise; Служба времени Windows
+            //  processInfo.FileName = "W32Time";
+            ////  processInfo. FileName = "Служба времени Windows";
+            //  processInfo.Arguments = "config ServiceName start = auto»"; // auto|demand|disabled|delayed-auto
+            //  processInfo.UseShellExecute = true;
+            //  processInfo.Verb = "runas"; // от имени администратора
+            //  processInfo.WindowStyle = ProcessWindowStyle.Hidden; // скрыть окно
+
+            //  System.Diagnostics.Process pr = new System.Diagnostics.Process();
+
+            //  try
+            //  {
+            //      pr = Process.Start(processInfo);
+            //  }
+            //  catch (Exception ex)
+            //  {
+            //      tempLog = $"Произошла ошибка при запуске ntcnjdjq службы \t\n{ex}";
+            //      WrateText(tempLog);
+            //      //Ничего не делаем, потому что пользователь, возможно, нажал кнопку «Нет»
+            //      // в ответ на вопрос о запуске программы в окне предупреждения UAC (для Windows 7)
+            //  }
+
+            //  pr.WaitForExit();
+            //pr.
+        }
+        #endregion
 
         // Останавливаем службу
         public void StopService(string serviceName = myServise)
@@ -78,9 +154,14 @@ namespace TimeUpdatesWF
             catch (Exception ex)
             {
                 tempLog = $"Произошла ошибка при остановке службы \t\n{ex}";
+                WrateText(tempLog);
+            }
+            finally
+            {
+                service.Dispose();
             }
         }
-
+        
 
         // Перезапуск службы
         public void RestartService(string serviceName = myServise)
@@ -111,6 +192,11 @@ namespace TimeUpdatesWF
             catch (Exception ex)
             {
                 tempLog = $"Произошла ошибка при перезапуске службы \t\n{ex}";
+                WrateText(tempLog);
+            }
+            finally
+            {
+                service.Dispose();
             }
         }
 
@@ -118,11 +204,11 @@ namespace TimeUpdatesWF
         public bool InitMinutes(int myMinutes)
         {
             UpdatesMinute = myMinutes;
-            // RestartService(myServise, myMinutes);
+            WrateText($"Время обновление изменено на {myMinutes}");
             return true;
         }
 
-        //Получеение минут по имолчанию
+        //Получеение минут по умолчанию
         public int GettMinutes(int myMinutes)
         {
 
@@ -192,7 +278,8 @@ namespace TimeUpdatesWF
         {
             string tempPathDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             //DirectoryInfo dirInfo = new DirectoryInfo(@"Log");
-            FileInfo dirInfo = new FileInfo(@"tempPathDir\Log.txt");
+
+            FileInfo dirInfo = new FileInfo($"{tempPathDir}"+@"\Log.txt");
             try
             {
                 if (!dirInfo.Exists)
@@ -216,23 +303,21 @@ namespace TimeUpdatesWF
             }
         }
 
-        public  void Cikle(bool z)
+        /// <summary>
+        /// Запуск потока обновления
+        /// </summary>
+        /// <param name="z"></param>
+        public  void Cikle()
         {
-        
-            
-           myThread.Start(z); // запускаем поток
-            
-          
-           
+           myThread.Start(); // запускаем поток   
         }
 
-
-        public static void TimeSynchronization(object xx)
+        /// <summary>
+        /// Метод обновления времени
+        /// </summary>
+        /// <param name="xx"></param>
+        public static void TimeSynchronization()
         {
-           // CancellationTokenSource token = new CancellationTokenSource(); // nht,etn 4.3
-            int a = 0;
-            // bool temp = cikle;
-          //  Thread.Sleep(UpdatesMinute * 1000);
             while (true)
             {
                 Process p = new Process();
@@ -243,21 +328,9 @@ namespace TimeUpdatesWF
                 p.Start();
                 p.WaitForExit();
                 Thread.Sleep(UpdatesMinute * 60000);
-               
                 continue;
-               // break;
-                //Thread.Sleep(UpdatesMinute * 1000);
-               
-                //if (a == 12345)
-                //{
-                 //  MessageBox.Show($"{UpdatesMinute * 1000}");
-                //    break;
-                //}
-                //   // break;
-
-                a++;
             }
-            MessageBox.Show($"{UpdatesMinute * 1000}");
+          
         }
 
     
