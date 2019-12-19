@@ -221,14 +221,8 @@ namespace TimeUpdatesWF
         {
             String s3 = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
             string pathApp = Application.StartupPath;
-           // s3 += "\\";
-            //WrateText("Строка подключения \n" + s3);
-            // MessageBox.Show(s3);
-
-            //string a = "~runme.lnk"; GetProcesses.exe
             string a = @"\TimeUpdatesWF.exe";
-            //string b = @"C:\EoU\"; myPachDir
-             string b = pathApp; // + "GetProcesses\\";
+            string b = pathApp; 
             string c = s3;
 
             try
@@ -246,15 +240,12 @@ namespace TimeUpdatesWF
                     #endregion
 
                     System.IO.File.Copy(b + a, c + a);
-                    //File.Copy(@"C:\EoU\~runme", patchStartup);
                     WrateText("Копирование ярлыка завершено!!");
                 }
 
                 else
                 {
                     //  var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
-                    //  key.DeleteValue("Отправка чеков в ОФД",true);
-                    // File.Delete(@"C:\EoU\EthOverUsb.exe");
                     System.IO.File.Delete(c + a);
                     WrateText("Не актуальный ярлык удален");
                 }
@@ -330,41 +321,6 @@ namespace TimeUpdatesWF
             }
           
         }
-
-    
-
-        //запись в файл
-        /// <summary>
-        /// запись в текстовой файл. Временное логирования
-        /// </summary>
-        /// <param name="myText"></param>
-        //public void WrateTextTemp(string myText, string myPachDir)
-        //{
-        //    //DirectoryInfo dirInfo = new DirectoryInfo("\\Log");
-
-        //    try
-        //    {
-        //    //    if (!dirInfo.Exists)
-        //    //    {
-        //    //        dirInfo.Create();// создание кaтолога
-        //    //        //Directory.CreateDirectory(myPachDir + "Log"); //создание папки лога
-        //    //        // File.Create(myPachDir + @"Log\texLog.txt");
-        //    //    }
-
-        //        using (StreamWriter sw = new StreamWriter(myPachDir, System.Text.Encoding.Default))
-        //        //using (StreamWriter sw = new StreamWriter(@"Log\Log.txt", true, System.Text.Encoding.Default))
-        //        {
-        //            // sw.WriteLine(DateTime.Now + "\t\n" + myText); // запись
-        //            sw.WriteLine(myText); // запись
-
-        //        }
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //}
 
     }
     }

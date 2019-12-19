@@ -17,6 +17,9 @@ namespace TimeUpdatesWF
         public Form1()
         {
             InitializeComponent();
+
+            this.ShowInTaskbar = true;
+            notifyIcon1.Click += notifyIcon1_Click;
         }
 
 
@@ -30,8 +33,9 @@ namespace TimeUpdatesWF
         {
             servis = new Bl();
             servis.StartService();
+            TestVariable();
             //  servis.TestStart(); // тестовой метод
-            
+
         }
 
         //Остановить
@@ -83,6 +87,7 @@ namespace TimeUpdatesWF
         private void Form1_Load(object sender, EventArgs e)
         {
             tetstProperty();
+            servis.CopyLinkAppStartup(true);
         }
 
         //Указываем количество минут по умолчанию.
@@ -112,6 +117,17 @@ namespace TimeUpdatesWF
             Bl.myThread.Abort();
             Application.Exit();
             
+        }
+
+        void notifyIcon1_Click(object sender, EventArgs e)
+        {
+           // this.WindowState = FormWindowState.Normal;
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        public void TestVariable()
+        {
+           // this.Hide();
         }
     }
 }
