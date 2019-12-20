@@ -44,6 +44,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.дмитрийМ2019ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -62,6 +65,8 @@
             // 
             // файлToolStripMenuItem
             // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
@@ -194,6 +199,27 @@
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem,
+            this.дмитрийМ2019ToolStripMenuItem});
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Text = "?";
+            // 
+            // программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem
+            // 
+            this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem.Name = "программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem";
+            this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem.Size = new System.Drawing.Size(389, 22);
+            this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem.Text = "Программа обновления времени через службу времени";
+            // 
+            // дмитрийМ2019ToolStripMenuItem
+            // 
+            this.дмитрийМ2019ToolStripMenuItem.Name = "дмитрийМ2019ToolStripMenuItem";
+            this.дмитрийМ2019ToolStripMenuItem.Size = new System.Drawing.Size(389, 22);
+            this.дмитрийМ2019ToolStripMenuItem.Text = "Дмитрий М. 2019";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,6 +265,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem дмитрийМ2019ToolStripMenuItem;
     }
 }
 
