@@ -111,8 +111,8 @@ namespace TimeUpdatesWF
             int tempMinutes = (int)numericUpDown1.Value;
             Properties.Settings.Default.MinuteDef = tempMinutes;
             Properties.Settings.Default.Save();
-           // servis.InitMinutes(tempMinutes);
-            servis.GetFailSite();
+            servis.InitMinutes(tempMinutes);
+          
         }
 
         //При закрытии формы
@@ -156,7 +156,16 @@ namespace TimeUpdatesWF
         //Скачать последнию версию
         private void скачатьПоследниюВерсиюToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            servis = new Bl();
 
+            if (servis.GetFailSite() != true)
+            {            
+                MessageBox.Show("ОПроизошла ошибка при скачивании новой версии. Проверте интернет или настрйки анивируса."); 
+            }
+
+            else
+            MessageBox.Show("Обновление скачено! Находится в папке Документы");
+            // servis.GetFailSite();
         }
     }
 }

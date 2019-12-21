@@ -327,30 +327,35 @@ namespace TimeUpdatesWF
         /// <summary>
         /// Получение файла обновления ссайта 000webhostapp.com
         /// </summary>
-        public void GetFailSite()
+        public bool GetFailSite()
         {
 
             string errorLog = $"{DateTime.Now.ToString()}\t\n";
             string pathFile =  Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+@"\ОбновлениеВремени.zip"; // загрузка на раб стол
             string serFtp = @"https://testkkm.000webhostapp.com/GetUpTime/TimeUpdatesWF.zip";
+            bool resul = false;
+
+            File.Delete(pathFile);
 
             if (System.IO.File.Exists(pathFile))
             {
                 errorLog += $"Данный файл уже существует \t\n{serFtp}\t\n";
                 WrateText(errorLog);
+                File.Delete(pathFile);
+                errorLog += $"Старый файл был удален \t\n{serFtp}\t\n";
             }
 
             else
             {
                 using (var web = new WebClient())
                 {
-
+                     
                     // скачиваем откуда и куда
                     web.DownloadFile(serFtp, pathFile);
-
+                    resul = true;
                 }
             }
-
+            return resul;
         }
 
 
