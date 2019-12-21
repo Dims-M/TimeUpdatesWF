@@ -324,6 +324,37 @@ namespace TimeUpdatesWF
         }
 
 
+        /// <summary>
+        /// Получение файла обновления ссайта 000webhostapp.com
+        /// </summary>
+        public void GetFailSite()
+        {
+
+            string errorLog = $"{DateTime.Now.ToString()}\t\n";
+            string pathFile =  Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+@"\ОбновлениеВремени.zip"; // загрузка на раб стол
+            string serFtp = @"https://testkkm.000webhostapp.com/GetUpTime/TimeUpdatesWF.zip";
+
+            if (System.IO.File.Exists(pathFile))
+            {
+                errorLog += $"Данный файл уже существует \t\n{serFtp}\t\n";
+                WrateText(errorLog);
+            }
+
+            else
+            {
+                using (var web = new WebClient())
+                {
+
+                    // скачиваем откуда и куда
+                    web.DownloadFile(serFtp, pathFile);
+
+                }
+            }
+
+        }
+
+
+        #region Тестовой метод проверки обновления
         ///// <summary>
         ///// ****
         ///// </summary>
@@ -360,8 +391,9 @@ namespace TimeUpdatesWF
         //    }
         //    return true; //даем знать основной команде, которая вызвала метод, что мол, есть обнова и лучше нам пока не начинать работать
         //}
+        #endregion
 
     }
-    }
+}
 
 

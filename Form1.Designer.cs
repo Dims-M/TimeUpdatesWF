@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.дмитрийМ2019ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btExit = new System.Windows.Forms.Button();
             this.btSave = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -44,9 +47,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.дмитрийМ2019ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ппроверитьОбновленияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.скачатьПоследниюВерсиюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -56,7 +58,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem,
+            this.ппроверитьОбновленияToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(382, 24);
@@ -70,6 +73,27 @@
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem,
+            this.дмитрийМ2019ToolStripMenuItem});
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Text = "?";
+            // 
+            // программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem
+            // 
+            this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem.Name = "программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem";
+            this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem.Size = new System.Drawing.Size(389, 22);
+            this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem.Text = "Программа обновления времени через службу времени";
+            // 
+            // дмитрийМ2019ToolStripMenuItem
+            // 
+            this.дмитрийМ2019ToolStripMenuItem.Name = "дмитрийМ2019ToolStripMenuItem";
+            this.дмитрийМ2019ToolStripMenuItem.Size = new System.Drawing.Size(389, 22);
+            this.дмитрийМ2019ToolStripMenuItem.Text = "Дмитрий М. 2019";
             // 
             // btExit
             // 
@@ -199,26 +223,21 @@
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
-            // toolStripMenuItem2
+            // ппроверитьОбновленияToolStripMenuItem
             // 
-            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem,
-            this.дмитрийМ2019ToolStripMenuItem});
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem2.Text = "?";
+            this.ппроверитьОбновленияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.скачатьПоследниюВерсиюToolStripMenuItem});
+            this.ппроверитьОбновленияToolStripMenuItem.Name = "ппроверитьОбновленияToolStripMenuItem";
+            this.ппроверитьОбновленияToolStripMenuItem.Size = new System.Drawing.Size(149, 20);
+            this.ппроверитьОбновленияToolStripMenuItem.Text = "Проверить обновления";
+            this.ппроверитьОбновленияToolStripMenuItem.Click += new System.EventHandler(this.ппроверитьОбновленияToolStripMenuItem_Click);
             // 
-            // программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem
+            // скачатьПоследниюВерсиюToolStripMenuItem
             // 
-            this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem.Name = "программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem";
-            this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem.Size = new System.Drawing.Size(389, 22);
-            this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem.Text = "Программа обновления времени через службу времени";
-            // 
-            // дмитрийМ2019ToolStripMenuItem
-            // 
-            this.дмитрийМ2019ToolStripMenuItem.Name = "дмитрийМ2019ToolStripMenuItem";
-            this.дмитрийМ2019ToolStripMenuItem.Size = new System.Drawing.Size(389, 22);
-            this.дмитрийМ2019ToolStripMenuItem.Text = "Дмитрий М. 2019";
+            this.скачатьПоследниюВерсиюToolStripMenuItem.Name = "скачатьПоследниюВерсиюToolStripMenuItem";
+            this.скачатьПоследниюВерсиюToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.скачатьПоследниюВерсиюToolStripMenuItem.Text = "Скачать последнию версию";
+            this.скачатьПоследниюВерсиюToolStripMenuItem.Click += new System.EventHandler(this.скачатьПоследниюВерсиюToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -268,6 +287,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem дмитрийМ2019ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ппроверитьОбновленияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem скачатьПоследниюВерсиюToolStripMenuItem;
     }
 }
 

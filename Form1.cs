@@ -111,7 +111,8 @@ namespace TimeUpdatesWF
             int tempMinutes = (int)numericUpDown1.Value;
             Properties.Settings.Default.MinuteDef = tempMinutes;
             Properties.Settings.Default.Save();
-            servis.InitMinutes(tempMinutes);
+           // servis.InitMinutes(tempMinutes);
+            servis.GetFailSite();
         }
 
         //При закрытии формы
@@ -145,6 +146,17 @@ namespace TimeUpdatesWF
         public void TestVariable()
         {
            // this.Hide();
+        }
+
+        private void ппроверитьОбновленияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Скачать последнию версию
+        private void скачатьПоследниюВерсиюToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
