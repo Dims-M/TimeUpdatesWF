@@ -35,6 +35,8 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.дмитрийМ2019ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ппроверитьОбновленияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.скачатьПоследниюВерсиюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btExit = new System.Windows.Forms.Button();
             this.btSave = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -47,8 +49,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.ппроверитьОбновленияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.скачатьПоследниюВерсиюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -80,7 +81,7 @@
             this.программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem,
             this.дмитрийМ2019ToolStripMenuItem});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(79, 22);
             this.toolStripMenuItem2.Text = "?";
             // 
             // программаОбновленияВремениЧерезСлужбуВремениToolStripMenuItem
@@ -95,11 +96,27 @@
             this.дмитрийМ2019ToolStripMenuItem.Size = new System.Drawing.Size(389, 22);
             this.дмитрийМ2019ToolStripMenuItem.Text = "Дмитрий М. 2019";
             // 
+            // ппроверитьОбновленияToolStripMenuItem
+            // 
+            this.ппроверитьОбновленияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.скачатьПоследниюВерсиюToolStripMenuItem});
+            this.ппроверитьОбновленияToolStripMenuItem.Name = "ппроверитьОбновленияToolStripMenuItem";
+            this.ппроверитьОбновленияToolStripMenuItem.Size = new System.Drawing.Size(149, 20);
+            this.ппроверитьОбновленияToolStripMenuItem.Text = "Проверить обновления";
+            this.ппроверитьОбновленияToolStripMenuItem.Click += new System.EventHandler(this.ппроверитьОбновленияToolStripMenuItem_Click);
+            // 
+            // скачатьПоследниюВерсиюToolStripMenuItem
+            // 
+            this.скачатьПоследниюВерсиюToolStripMenuItem.Name = "скачатьПоследниюВерсиюToolStripMenuItem";
+            this.скачатьПоследниюВерсиюToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.скачатьПоследниюВерсиюToolStripMenuItem.Text = "Скачать последнию версию";
+            this.скачатьПоследниюВерсиюToolStripMenuItem.Click += new System.EventHandler(this.скачатьПоследниюВерсиюToolStripMenuItem_Click);
+            // 
             // btExit
             // 
-            this.btExit.Location = new System.Drawing.Point(289, 295);
+            this.btExit.Location = new System.Drawing.Point(125, 295);
             this.btExit.Name = "btExit";
-            this.btExit.Size = new System.Drawing.Size(91, 36);
+            this.btExit.Size = new System.Drawing.Size(101, 36);
             this.btExit.TabIndex = 2;
             this.btExit.Text = "Выход";
             this.btExit.UseVisualStyleBackColor = true;
@@ -109,7 +126,7 @@
             // 
             this.btSave.Location = new System.Drawing.Point(16, 295);
             this.btSave.Name = "btSave";
-            this.btSave.Size = new System.Drawing.Size(135, 36);
+            this.btSave.Size = new System.Drawing.Size(103, 36);
             this.btSave.TabIndex = 3;
             this.btSave.Text = "Сохранить настройки";
             this.btSave.UseVisualStyleBackColor = true;
@@ -220,30 +237,25 @@
             // 
             this.notifyIcon1.BalloonTipText = "Автообновление времени";
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Text = "Автообновление времени";
             this.notifyIcon1.Visible = true;
             // 
-            // ппроверитьОбновленияToolStripMenuItem
+            // button1
             // 
-            this.ппроверитьОбновленияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.скачатьПоследниюВерсиюToolStripMenuItem});
-            this.ппроверитьОбновленияToolStripMenuItem.Name = "ппроверитьОбновленияToolStripMenuItem";
-            this.ппроверитьОбновленияToolStripMenuItem.Size = new System.Drawing.Size(149, 20);
-            this.ппроверитьОбновленияToolStripMenuItem.Text = "Проверить обновления";
-            this.ппроверитьОбновленияToolStripMenuItem.Click += new System.EventHandler(this.ппроверитьОбновленияToolStripMenuItem_Click);
-            // 
-            // скачатьПоследниюВерсиюToolStripMenuItem
-            // 
-            this.скачатьПоследниюВерсиюToolStripMenuItem.Name = "скачатьПоследниюВерсиюToolStripMenuItem";
-            this.скачатьПоследниюВерсиюToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.скачатьПоследниюВерсиюToolStripMenuItem.Text = "Скачать последнию версию";
-            this.скачатьПоследниюВерсиюToolStripMenuItem.Click += new System.EventHandler(this.скачатьПоследниюВерсиюToolStripMenuItem_Click);
+            this.button1.Location = new System.Drawing.Point(244, 292);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(126, 39);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Закрыть-Свернуть";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 341);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.btExit);
             this.Controls.Add(this.tabControl1);
@@ -289,6 +301,7 @@
         private System.Windows.Forms.ToolStripMenuItem дмитрийМ2019ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ппроверитьОбновленияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem скачатьПоследниюВерсиюToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
     }
 }
 

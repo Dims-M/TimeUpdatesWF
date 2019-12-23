@@ -18,7 +18,7 @@ namespace TimeUpdatesWF
         {
             InitializeComponent();
 
-            this.ShowInTaskbar = true;
+            this.ShowInTaskbar = false;
             notifyIcon1.Click += notifyIcon1_Click;
             this.WindowState = FormWindowState.Minimized; // форма при запуске свернута
             this.ShowInTaskbar = false; //скрываем форму из раб панельки
@@ -126,8 +126,13 @@ namespace TimeUpdatesWF
 
         void notifyIcon1_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Normal;
-           // this.WindowState = FormWindowState.Minimized;
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.WindowState = FormWindowState. Normal;
+                this.ShowInTaskbar = false;
+                notifyIcon1.Visible = true;
+            }
+           
         }
 
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
@@ -166,6 +171,23 @@ namespace TimeUpdatesWF
             else
             MessageBox.Show("Обновление скачено! Находится в папке Документы");
             // servis.GetFailSite();
+        }
+
+        //Кнопка свернуть программу
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized; // форма при запуске свернута
+           
+            if (WindowState == FormWindowState.Minimized)
+            {
+                // прячем наше окно из панели
+                this.ShowInTaskbar = false;
+                //this.mi
+                // делаем нашу иконку в трее активной
+                notifyIcon1.Visible = true;
+            }
+            this.ShowInTaskbar = false; //скрываем форму из раб панельки
+           // Form.Visible = false;
         }
     }
 }
