@@ -36,8 +36,11 @@ namespace TimeUpdatesWF
         {
             servis = new Bl();
             servis.StartService();
-            TestVariable();
-            //  servis.TestStart(); // тестовой метод
+            // TestVariable();
+          string temp = servis.ExecuteCommandAsAdmin();
+          label1.Text = temp;
+
+          //  servis.TestStart(); // тестовой метод
 
         }
 

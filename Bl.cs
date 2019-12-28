@@ -315,8 +315,8 @@ namespace TimeUpdatesWF
                 p.StartInfo.CreateNoWindow = true;
                 p.StartInfo.FileName = "w32tm.exe";
                 p.StartInfo.UseShellExecute = false;
-                p.Start();
-                p.WaitForExit();
+                p.Start(); // запуск
+                p.WaitForExit(); 
                 Thread.Sleep(UpdatesMinute * 60000);
                 continue;
             }
@@ -358,47 +358,126 @@ namespace TimeUpdatesWF
             return resul;
         }
 
+        public void testUbdate1()
+        {
+            //System.Diagnostics.Process.Start("cmd.exe", "/C " + "w32tm /config /manualpeerlist:time.windows.com /syncfromflags:manual /reliable:yes /update");
+            //System.Diagnostics.Process.Start("cmd.exe", "/C " + "net start w32time");
+            //System.Diagnostics.Process.Start("cmd.exe", "/C " + @"net time /setsntp:88.147.254.232");
 
-        #region Тестовой метод проверки обновления
-        ///// <summary>
-        ///// ****
-        ///// </summary>
-        ///// <returns></returns>
-        ////Тестовой метод проверки обновления
-        //public bool Сheck()
-        //{
-        //   // VersionChecker verChecker = new VersionChecker();
-        //    string s = "";
-        //    string localVersion = "";
-        //    try
-        //    {
-        //        while (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable()) //ждем пока подрубимся к сети
-        //        {
-        //            System.Threading.Thread.Sleep(60000);
-        //        }
-        //        localVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); //получение версии запущенной программы
-        //        WebClient w = new WebClient();
-        //        s = w.DownloadString("http:// domen.ru/version.txt");
-        //        w.Dispose();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //       // errors(ex.Message);
-        //    }
-        //    string[] q = s.Split(‘|’); // у меня в файле указана не только версия, но и адрес для загрузки последней версии программы через знак ‘|’
-        //    //if (verChecker.NewVersionExists(localVersion, q[0])) // отправляем две версии другому методу для их сверки
-        //    //{
-        //    //    load_obnovlenie(q[1]); //версия старая и запускаем метод по обновлению нашей программы(будет в следующей статье)
-        //    //}
-        //    else
-        //    {
-        //        return false; //версия новая
-        //    }
-        //    return true; //даем знать основной команде, которая вызвала метод, что мол, есть обнова и лучше нам пока не начинать работать
-        //}
-        #endregion
+            //System.Diagnostics.Process.Start("cmd.exe", "/C " + "w32tm /config /update");
+            // System.Diagnostics.Process.Start("cmd.exe", "/C " + "net start w32time");
+            // System.Diagnostics.Process.Start("cmd.exe", "/C " + "w32tm /config /manualpeerlist:time.windows.com /syncfromflags:manual /reliable:yes /update");
 
-    }
+            Process p = new Process();
+            // p.StartInfo.Arguments = "/resync";
+           // p.StartInfo.Arguments = @"/manualpeerlist:time.windows.com /syncfromflags:manual /reliable:yes /update";
+          //  p.StartInfo.Arguments = "/config/syncfromflags:manual/manualpeerlist:time.windows.com";
+            // p.StartInfo.Arguments = @"//server.lan.local/set/y";
+
+           // p.StartInfo.CreateNoWindow = false;
+           // p.StartInfo.FileName = "w32time";
+           // p.StartInfo.FileName = "w32tm.exe";
+           // p.StartInfo.UseShellExecute = false;
+            // p.Start(); // запуск
+
+            string command = @"w32tm /config /syncfromflags:manual /manualpeerlist:88.147.254.232";
+            var startInfo = new ProcessStartInfo();
+            startInfo.FileName = "cmd";
+            startInfo.Arguments = "/c " + command;
+           // startInfo.Arguments = "/c " + "";
+            startInfo.UseShellExecute = true;
+
+            startInfo.Verb = "runas"; // run elevated            
+           
+            //var proc = Process.Start(startInfo);
+            //Console.WriteLine(proc);
+
+            // p.WaitForExit();
+        }
+
+        public string ExecuteCommandAsAdmin()
+        {
+            try
+            {
+             string command = @"w32tm /config /syncfromflags:manual /manualpeerlist:88.147.254.232";
+            //string command = @"w32tm /config /syncfromflags:manual /manualpeerlist:88.147.254.232";
+                string tempLog = "";
+
+                ProcessStartInfo procStartInfo = new ProcessStartInfo()
+            {
+                RedirectStandardError = true,
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                FileName = "runas.exe",
+                Arguments = "/user:Administrator \"cmd /c " + command + "\""
+            };
+
+            using (Process proc = new Process())
+            {
+                proc.StartInfo = procStartInfo;
+                proc.Start();
+
+                //string output = proc.StandardOutput.ReadToEnd();
+
+                //if (string.IsNullOrEmpty(output))
+                //    output = proc.StandardError.ReadToEnd();
+
+                return "Обновление времени";
+            }
+               
+            }
+
+            catch (Exception ex)
+            {
+                tempLog = ex.ToString();
+                WrateText(tempLog);
+                return tempLog;
+            }
+
+            //return tempLog;
+        }
+
+            #region Тестовой метод проверки обновления
+            ///// <summary>
+            ///// ****
+            ///// </summary>
+            ///// <returns></returns>
+            ////Тестовой метод проверки обновления
+            //public bool Сheck()
+            //{
+            //   // VersionChecker verChecker = new VersionChecker();
+            //    string s = "";
+            //    string localVersion = "";
+            //    try
+            //    {
+            //        while (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable()) //ждем пока подрубимся к сети
+            //        {
+            //            System.Threading.Thread.Sleep(60000);
+            //        }
+            //        localVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); //получение версии запущенной программы
+            //        WebClient w = new WebClient();
+            //        s = w.DownloadString("http:// domen.ru/version.txt");
+            //        w.Dispose();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //       // errors(ex.Message);
+            //    }
+            //    string[] q = s.Split(‘|’); // у меня в файле указана не только версия, но и адрес для загрузки последней версии программы через знак ‘|’
+            //    //if (verChecker.NewVersionExists(localVersion, q[0])) // отправляем две версии другому методу для их сверки
+            //    //{
+            //    //    load_obnovlenie(q[1]); //версия старая и запускаем метод по обновлению нашей программы(будет в следующей статье)
+            //    //}
+            //    else
+            //    {
+            //        return false; //версия новая
+            //    }
+            //    return true; //даем знать основной команде, которая вызвала метод, что мол, есть обнова и лучше нам пока не начинать работать
+            //}
+            #endregion
+
+        }
 }
 
 
