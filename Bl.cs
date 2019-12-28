@@ -399,8 +399,9 @@ namespace TimeUpdatesWF
         {
             try
             {
-             string command = @"w32tm /config /syncfromflags:manual /manualpeerlist:88.147.254.232";
-            //string command = @"w32tm /config /syncfromflags:manual /manualpeerlist:88.147.254.232";
+                //string command = @"w32tm /config /syncfromflags:manual /manualpeerlist:88.147.254.232";
+                //string command = @"w32tm /config /syncfromflags:manual /manualpeerlist:88.147.254.232";
+                string command = @"w32tm /config /manualpeerlist:time.windows.com /syncfromflags:manual /reliable:yes /update";
                 string tempLog = "";
 
                 ProcessStartInfo procStartInfo = new ProcessStartInfo()
@@ -410,7 +411,7 @@ namespace TimeUpdatesWF
                 UseShellExecute = false,
                 CreateNoWindow = true,
                 FileName = "runas.exe",
-                Arguments = "/user:Administrator \"cmd /c " + command + "\""
+                Arguments = "/user:Administrator \"cmd /K " + command + "\""
             };
 
             using (Process proc = new Process())

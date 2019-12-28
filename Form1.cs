@@ -92,11 +92,18 @@ namespace TimeUpdatesWF
         //При загрузке формы
         private void Form1_Load(object sender, EventArgs e)
         {
+            myDateTime.Text = $"Текущие время{DateTime.Now}\t\n";
+            servis = new Bl();
             tetstProperty();
             servis.CopyLinkAppStartup(true);
+            servis.ExecuteCommandAsAdmin();
+            myDateTime.Text += $"Стало: {DateTime.Now}\t\n";
         }
 
-        //Указываем количество минут по умолчанию.
+        //Указываем количество минут по умолчанию.\
+        /// <summary>
+        /// 
+        /// </summary>
         private void tetstProperty()
         {
             servis = new Bl();
