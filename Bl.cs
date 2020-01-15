@@ -397,7 +397,7 @@ namespace TimeUpdatesWF
         }
 
         /// <summary>
-        /// 
+        /// Поточнаякоманда сдм на обновление времени
         /// </summary>
         /// <returns></returns>
         public string ExecuteCommandAsAdmin()
