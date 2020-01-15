@@ -22,6 +22,7 @@ namespace TimeUpdatesWF
         private static int UpdatesMinute = 60;
         string tempLog = "";
 
+        //запускаем служюу обновления времени в отдельном потоке
       public static  Thread myThread = new Thread(new ThreadStart(TimeSynchronization));
 
         // Запуск службы
@@ -395,6 +396,10 @@ namespace TimeUpdatesWF
             // p.WaitForExit();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string ExecuteCommandAsAdmin()
         {
             try
@@ -411,20 +416,20 @@ namespace TimeUpdatesWF
                 UseShellExecute = false,
                 CreateNoWindow = true,
                 FileName = "runas.exe",
-                Arguments = "/user:Administrator \"cmd /K " + command + "\""
+                Arguments = "/user:Administrator \"cmd /c" + command + "\""
             };
 
             using (Process proc = new Process())
             {
                 proc.StartInfo = procStartInfo;
                 proc.Start();
+                Thread.Sleep(300);
+                    //string output = proc.StandardOutput.ReadToEnd();
 
-                //string output = proc.StandardOutput.ReadToEnd();
-
-                //if (string.IsNullOrEmpty(output))
-                //    output = proc.StandardError.ReadToEnd();
-
-                return "Обновление времени";
+                    //if (string.IsNullOrEmpty(output))
+                    //    output = proc.StandardError.ReadToEnd();
+                    proc.Close();
+                    return "Обновление времени";
             }
                
             }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using TimeUpdatesWF.Forms;
 
 namespace TimeUpdatesWF
 {
@@ -79,6 +80,7 @@ namespace TimeUpdatesWF
         {
             // servis.Cikle(false); //  запуск метода в новм потоке
             Bl.myThread.Abort();
+
             Close();
             Application.Exit();
         }
@@ -212,6 +214,13 @@ namespace TimeUpdatesWF
         {
             runWiFiPoint = new RunWiFiPoint();
             runWiFiPoint.RunCdmComand();
+        }
+        
+        //Кнопка настройки работы с точкой доступа
+        private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PoinWiFISetings poinWiFISetings = new PoinWiFISetings();
+            poinWiFISetings.Show();
         }
     }
 }
