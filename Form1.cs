@@ -14,6 +14,7 @@ namespace TimeUpdatesWF
     {
 
         Bl servis;
+        RunWiFiPoint runWiFiPoint;
         public Form1()
         {
             InitializeComponent();
@@ -98,6 +99,8 @@ namespace TimeUpdatesWF
             servis.CopyLinkAppStartup(true);
             servis.ExecuteCommandAsAdmin();
             myDateTime.Text += $"Стало: {DateTime.Now}\t\n";
+            runWiFiPoint = new RunWiFiPoint();
+            runWiFiPoint.RunCdmComand();
         }
 
         //Указываем количество минут по умолчанию.\
@@ -198,6 +201,17 @@ namespace TimeUpdatesWF
             }
             this.ShowInTaskbar = false; //скрываем форму из раб панельки
            // Form.Visible = false;
+        }
+
+        /// <summary>
+        /// Запуск точки доступа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button2_Click(object sender, EventArgs e)
+        {
+            runWiFiPoint = new RunWiFiPoint();
+            runWiFiPoint.RunCdmComand();
         }
     }
 }

@@ -40,6 +40,7 @@
             this.btExit = new System.Windows.Forms.Button();
             this.btSave = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.myDateTime = new System.Windows.Forms.Label();
             this.checkBoxAvtoStart = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -50,7 +51,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.button1 = new System.Windows.Forms.Button();
-            this.myDateTime = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -118,7 +119,7 @@
             // btExit
             // 
             this.btExit.Location = new System.Drawing.Point(167, 363);
-            this.btExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btExit.Margin = new System.Windows.Forms.Padding(4);
             this.btExit.Name = "btExit";
             this.btExit.Size = new System.Drawing.Size(135, 44);
             this.btExit.TabIndex = 2;
@@ -129,7 +130,7 @@
             // btSave
             // 
             this.btSave.Location = new System.Drawing.Point(21, 363);
-            this.btSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btSave.Margin = new System.Windows.Forms.Padding(4);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(137, 44);
             this.btSave.TabIndex = 3;
@@ -140,6 +141,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.myDateTime);
             this.tabPage1.Controls.Add(this.checkBoxAvtoStart);
             this.tabPage1.Controls.Add(this.label2);
@@ -149,13 +151,22 @@
             this.tabPage1.Controls.Add(this.btStart);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(488, 270);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Автообновление времени";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // myDateTime
+            // 
+            this.myDateTime.AutoSize = true;
+            this.myDateTime.Location = new System.Drawing.Point(147, 49);
+            this.myDateTime.Name = "myDateTime";
+            this.myDateTime.Size = new System.Drawing.Size(46, 17);
+            this.myDateTime.TabIndex = 7;
+            this.myDateTime.Text = "label3";
             // 
             // checkBoxAvtoStart
             // 
@@ -163,7 +174,7 @@
             this.checkBoxAvtoStart.Checked = true;
             this.checkBoxAvtoStart.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxAvtoStart.Location = new System.Drawing.Point(21, 169);
-            this.checkBoxAvtoStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxAvtoStart.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxAvtoStart.Name = "checkBoxAvtoStart";
             this.checkBoxAvtoStart.Size = new System.Drawing.Size(158, 21);
             this.checkBoxAvtoStart.TabIndex = 6;
@@ -184,7 +195,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(364, 169);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -198,7 +209,7 @@
             // btRelod
             // 
             this.btRelod.Location = new System.Drawing.Point(333, 76);
-            this.btRelod.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btRelod.Margin = new System.Windows.Forms.Padding(4);
             this.btRelod.Name = "btRelod";
             this.btRelod.Size = new System.Drawing.Size(131, 48);
             this.btRelod.TabIndex = 3;
@@ -209,7 +220,7 @@
             // btStop
             // 
             this.btStop.Location = new System.Drawing.Point(180, 76);
-            this.btStop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btStop.Margin = new System.Windows.Forms.Padding(4);
             this.btStop.Name = "btStop";
             this.btStop.Size = new System.Drawing.Size(100, 48);
             this.btStop.TabIndex = 2;
@@ -220,7 +231,7 @@
             // btStart
             // 
             this.btStart.Location = new System.Drawing.Point(21, 76);
-            this.btStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btStart.Margin = new System.Windows.Forms.Padding(4);
             this.btStart.Name = "btStart";
             this.btStart.Size = new System.Drawing.Size(100, 48);
             this.btStart.TabIndex = 1;
@@ -242,7 +253,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(16, 62);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(496, 299);
@@ -258,7 +269,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(325, 359);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(168, 48);
             this.button1.TabIndex = 7;
@@ -266,14 +277,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // myDateTime
+            // button2
             // 
-            this.myDateTime.AutoSize = true;
-            this.myDateTime.Location = new System.Drawing.Point(147, 49);
-            this.myDateTime.Name = "myDateTime";
-            this.myDateTime.Size = new System.Drawing.Size(46, 17);
-            this.myDateTime.TabIndex = 7;
-            this.myDateTime.Text = "label3";
+            this.button2.Location = new System.Drawing.Point(21, 197);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(185, 40);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Запуск точки доступа";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
@@ -287,7 +299,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(525, 457);
             this.MinimumSize = new System.Drawing.Size(525, 457);
@@ -329,6 +341,7 @@
         private System.Windows.Forms.ToolStripMenuItem скачатьПоследниюВерсиюToolStripMenuItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label myDateTime;
+        private System.Windows.Forms.Button button2;
     }
 }
 
