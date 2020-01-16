@@ -11,6 +11,7 @@ namespace TimeUpdatesWF.Forms
 {
     public partial class PoinWiFISetings : Form
     {
+        RunWiFiPoint runWiFiPoint;
         public PoinWiFISetings()
         {
             InitializeComponent();
@@ -20,6 +21,14 @@ namespace TimeUpdatesWF.Forms
         {
           //  Application.Exit();
             Close();
+
+        }
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            runWiFiPoint = new RunWiFiPoint();
+            runWiFiPoint.CreatPoinWiFi(); // Создание точки доступа
 
         }
     }
