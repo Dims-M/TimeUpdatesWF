@@ -213,7 +213,9 @@ namespace TimeUpdatesWF
         private void button2_Click(object sender, EventArgs e)
         {
             runWiFiPoint = new RunWiFiPoint();
-            runWiFiPoint.RunCdmComand();
+            servis = new Bl();
+            // runWiFiPoint.RunCdmComand();
+            servis.GetFailSite();
         }
         
         //Кнопка настройки работы с точкой доступа

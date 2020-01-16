@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ionic.Zip;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -21,9 +22,15 @@ namespace TimeUpdatesWF
         private const string myServise = "W32Time";
         private static int UpdatesMinute = 60;
         string tempLog = "";
+        private string myPachDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\UtilKKM-Servis\";
+        private string linkAppPath = Environment.GetFolderPath(Environment.SpecialFolder.Startup) + @"\TimeUpdatesWF.lnk";
+
+
 
         //запускаем служюу обновления времени в отдельном потоке
-      public static  Thread myThread = new Thread(new ThreadStart(TimeSynchronization));
+        public static  Thread myThread = new Thread(new ThreadStart(TimeSynchronization));
+
+
 
         // Запуск службы
         public void StartService(string serviceName = myServise)
@@ -295,7 +302,7 @@ namespace TimeUpdatesWF
         }
 
         /// <summary>
-        /// Запуск потока обновления
+        /// Запуск потока обновления времени
         /// </summary>
         /// <param name="z"></param>
         public  void Cikle()
@@ -330,13 +337,22 @@ namespace TimeUpdatesWF
         /// </summary>
         public bool GetFailSite()
         {
-
+           
             string errorLog = $"{DateTime.Now.ToString()}\t\n";
-            string pathFile =  Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+@"\ОбновлениеВремени.zip"; // загрузка на раб стол
+           // string pathFile =  Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+ $@"\UtilKKM-Servis\ОбновлениеВремени{errorLog}.zip"; // загрузка обновления
+            //string pathFile = Application.ExecutablePath + $@"\UtilKKM-Servis\ОбновлениеВремени{errorLog}.zip"; // загрузка обновления
+            string pathFile = Application.StartupPath + @"\UtilKKM-Servis\ОбновлениеВремени.zip"; // загрузка обновления
             string serFtp = @"https://testkkm.000webhostapp.com/GetUpTime/TimeUpdatesWF.zip";
+            string absolitPath = Application.StartupPath;
             bool resul = false;
 
-            File.Delete(pathFile);
+            if (!Directory.Exists(absolitPath + @"\UtilKKM-Servis\"));
+            {
+                Directory.CreateDirectory(absolitPath + @"\UtilKKM-Servis\");
+            }
+
+           // File.Delete(pathFile);
+           
 
             if (System.IO.File.Exists(pathFile))
             {
@@ -350,13 +366,71 @@ namespace TimeUpdatesWF
             {
                 using (var web = new WebClient())
                 {
-                     
-                    // скачиваем откуда и куда
-                    web.DownloadFile(serFtp, pathFile);
+                    try
+                    {
+
+
+                        // скачиваем откуда и куда
+                        web.DownloadFile(serFtp, pathFile);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        WrateText("Ошибка при скачивании обновлений \t\n"+ex);
+                        resul = false;
+                    }
+
                     resul = true;
                 }
             }
             return resul;
+        }
+
+
+        /// <summary>
+        /// Разорхивация файлов с указание что и куда орхивировать
+        /// </summary>
+        /// <param name="MyzipFail">Путь для файла.Откуда и какой архив</param>
+        /// <param name="MyExtractPath">Куда распаковыватьы</param>
+        public void ZipArhivMyPath(string MyzipFail, string MyExtractPath)
+        {
+            try
+            {
+                using (ZipFile zip = ZipFile.Read(MyzipFail))
+                {
+                    foreach (ZipEntry e in zip)
+                    {
+                        e.Extract(MyExtractPath, ExtractExistingFileAction.OverwriteSilently); // перезаписывать существующие
+                    }
+                }
+                // ZipFile.ExtractToDirectory(MyzipFail, MyExtractPath);
+            }
+
+            catch (Exception ex)
+            {
+                WrateText("Ошибка при разорхивации архива EoU\n" + ex);
+            }
+
+            // File.Delete(MyzipFail);
+        }
+
+        //Распаковка архива в нужный каталог
+        public void ZipArhivJob()
+        {
+            string zipPath = @"C:\EoUTemp\EoU.zip";
+            string extractPath = @"C:\";
+
+            try
+            {
+               // ZipFile.ExtractToDirectory(zipPath, extractPath);
+            }
+
+            catch (Exception ex)
+            {
+                WrateText("Ошибка при разорхивации архива EoU\n" + ex);
+            }
+
+
         }
 
         public void testUbdate1()
