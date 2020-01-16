@@ -102,7 +102,7 @@ namespace TimeUpdatesWF
             servis.ExecuteCommandAsAdmin();
             myDateTime.Text += $"Стало: {DateTime.Now}\t\n";
             runWiFiPoint = new RunWiFiPoint();
-            runWiFiPoint.RunCdmComand();
+            runWiFiPoint.RunCdmComand(); //запуск включения точки доступа
         }
 
         //Указываем количество минут по умолчанию.\

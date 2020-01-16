@@ -354,16 +354,17 @@ namespace TimeUpdatesWF
            // File.Delete(pathFile);
            
 
-            if (System.IO.File.Exists(pathFile))
-            {
-                errorLog += $"Данный файл уже существует \t\n{serFtp}\t\n";
-                WrateText(errorLog);
-                File.Delete(pathFile);
-                errorLog += $"Старый файл был удален \t\n{serFtp}\t\n";
-            }
+            //if (System.IO.File.Exists(pathFile))
+            //{
+            //    errorLog += $"Данный файл уже существует \t\n{serFtp}\t\n";
+            //    WrateText(errorLog);
+            //    File.Delete(pathFile);
+            //    errorLog += $"Старый файл был удален \t\n{serFtp}\t\n";
+            //}
 
-            else
-            {
+           //else 
+            
+                File.Delete(pathFile);
                 using (var web = new WebClient())
                 {
                     try
@@ -380,9 +381,9 @@ namespace TimeUpdatesWF
                         resul = false;
                     }
 
-                    resul = true;
+                    
                 }
-            }
+            
             return resul;
         }
 
