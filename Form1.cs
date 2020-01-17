@@ -98,11 +98,11 @@ namespace TimeUpdatesWF
             myDateTime.Text = $"Текущие время{DateTime.Now}\t\n";
             servis = new Bl();
             tetstProperty();
-            servis.CopyLinkAppStartup(true);
+           // servis.CopyLinkAppStartup(true);
             servis.ExecuteCommandAsAdmin();
             myDateTime.Text += $"Стало: {DateTime.Now}\t\n";
             runWiFiPoint = new RunWiFiPoint();
-            runWiFiPoint.RunCdmComand(); //запуск включения точки доступа
+          //  runWiFiPoint.RunCdmComand(); //запуск включения точки доступа
         }
 
         //Указываем количество минут по умолчанию.\
@@ -180,7 +180,10 @@ namespace TimeUpdatesWF
 
             if (servis.GetFailSite() != true)
             {            
-                MessageBox.Show("ОПроизошла ошибка при скачивании новой версии. Проверте интернет или настрйки анивируса."); 
+                MessageBox.Show("Произошла ошибка при скачивании новой версии:" +
+                    "*Проверте интернет," +
+                    "*Настрйки анивируса," +
+                    "*Запустить программу от имени администратора!"); 
             }
 
             else

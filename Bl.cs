@@ -274,22 +274,31 @@ namespace TimeUpdatesWF
         /// <param name="myText"></param>
         public void WrateText(string myText)
         {
-            string tempPathDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            //  string tempPathDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string tempPathDir = @"Log"; // Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             //DirectoryInfo dirInfo = new DirectoryInfo(@"Log");
 
             FileInfo dirInfo = new FileInfo($"{tempPathDir}"+@"\Log.txt");
+            DirectoryInfo directoryInfo = new DirectoryInfo(tempPathDir);
+
+
             try
             {
+                if (!directoryInfo.Exists)
+                {
+                    directoryInfo.Create(); // Создание ктолога лога
+                }
+
                 if (!dirInfo.Exists)
                 {
-                    dirInfo.Create();// создание кaтолога
+                    dirInfo.Create();// создание файла
                 }
 
             }
 
             catch (Exception ex)
             {
-
+                MessageBox.Show("Ошибка при записи лога \t\n "+ex);
             }
 
             using (StreamWriter sw = new StreamWriter($"{tempPathDir}" + @"\Log.txt", true, System.Text.Encoding.Default))
@@ -341,6 +350,7 @@ namespace TimeUpdatesWF
             string errorLog = $"{DateTime.Now.ToString()}\t\n";
            // string pathFile =  Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+ $@"\UtilKKM-Servis\ОбновлениеВремени{errorLog}.zip"; // загрузка обновления
             //string pathFile = Application.ExecutablePath + $@"\UtilKKM-Servis\ОбновлениеВремени{errorLog}.zip"; // загрузка обновления
+           // string pathFile = Application.StartupPath + @"\UtilKKM-Servis\ОбновлениеВремени.zip"; // загрузка обновления
             string pathFile = Application.StartupPath + @"\UtilKKM-Servis\ОбновлениеВремени.zip"; // загрузка обновления
             string serFtp = @"https://testkkm.000webhostapp.com/GetUpTime/TimeUpdatesWF.zip";
             string absolitPath = Application.StartupPath;
@@ -369,10 +379,9 @@ namespace TimeUpdatesWF
                 {
                     try
                     {
-
-
                         // скачиваем откуда и куда
                         web.DownloadFile(serFtp, pathFile);
+                    resul = true;
 
                     }
                     catch (Exception ex)
@@ -380,8 +389,6 @@ namespace TimeUpdatesWF
                         WrateText("Ошибка при скачивании обновлений \t\n"+ex);
                         resul = false;
                     }
-
-                    
                 }
             
             return resul;
