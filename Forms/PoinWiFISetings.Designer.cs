@@ -38,12 +38,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.labelNamePoinWiFi = new System.Windows.Forms.Label();
             this.labellabelPasswordPoinWiFi = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonExit
             // 
             this.buttonExit.Location = new System.Drawing.Point(467, 345);
-            this.buttonExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExit.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(143, 81);
             this.buttonExit.TabIndex = 0;
@@ -54,7 +55,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(16, 351);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(191, 70);
             this.button1.TabIndex = 1;
@@ -83,10 +84,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(125, 246);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(326, 248);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(403, 49);
+            this.button2.Size = new System.Drawing.Size(269, 49);
             this.button2.TabIndex = 4;
             this.button2.Text = "Создать точку доступа Wi-Fi";
             this.button2.UseVisualStyleBackColor = true;
@@ -142,11 +143,23 @@
             this.labellabelPasswordPoinWiFi.TabIndex = 9;
             this.labellabelPasswordPoinWiFi.Text = ".";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(38, 248);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(225, 49);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "Запуск точки доступа";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // PoinWiFISetings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(625, 441);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.labellabelPasswordPoinWiFi);
             this.Controls.Add(this.labelNamePoinWiFi);
             this.Controls.Add(this.label4);
@@ -157,7 +170,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonExit);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PoinWiFISetings";
             this.Text = "PoinWiFISetings";
             this.ResumeLayout(false);
@@ -177,5 +190,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labelNamePoinWiFi;
         private System.Windows.Forms.Label labellabelPasswordPoinWiFi;
+        private System.Windows.Forms.Button button3;
     }
 }

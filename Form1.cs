@@ -217,8 +217,8 @@ namespace TimeUpdatesWF
         {
             runWiFiPoint = new RunWiFiPoint();
             servis = new Bl();
-            // runWiFiPoint.RunCdmComand();
-            servis.GetFailSite();
+             runWiFiPoint.RunCdmComand();
+           // servis.GetFailSite();
         }
         
         //Кнопка настройки работы с точкой доступа
