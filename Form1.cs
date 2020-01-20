@@ -97,12 +97,12 @@ namespace TimeUpdatesWF
         {
             myDateTime.Text = $"Текущие время{DateTime.Now}\t\n";
             servis = new Bl();
-            tetstProperty();
+            tetstProperty(); //загрузка настроек из проперти
            // servis.CopyLinkAppStartup(true);
             servis.ExecuteCommandAsAdmin();
             myDateTime.Text += $"Стало: {DateTime.Now}\t\n";
             runWiFiPoint = new RunWiFiPoint();
-          //  runWiFiPoint.RunCdmComand(); //запуск включения точки доступа
+            runWiFiPoint.RunCdmComand(); //запуск включения точки доступа
         }
 
         //Указываем количество минут по умолчанию.\
@@ -188,6 +188,7 @@ namespace TimeUpdatesWF
 
             else
             MessageBox.Show("Обновление скачено! Находится в папке Документы");
+            servis.WrateText($"{DateTime.Now}\t\n Обновление скачено!");
             // servis.GetFailSite();
         }
 

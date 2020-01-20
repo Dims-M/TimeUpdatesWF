@@ -173,6 +173,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PoinWiFISetings";
             this.Text = "PoinWiFISetings";
+            this.Load += new System.EventHandler(this.PoinWiFISetings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

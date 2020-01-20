@@ -38,5 +38,10 @@ namespace TimeUpdatesWF.Forms
            
             runWiFiPoint.RunCdmComand(); // запуск точки доступа
         }
+
+        private void PoinWiFISetings_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

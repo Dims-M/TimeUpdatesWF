@@ -36,12 +36,15 @@ namespace TimeUpdatesWF
             //  /c - после выполнения команды консоль закроется
             //  /к - не закрывать консоль после выполнения команды
             Process.Start(psi);
-            return true;
+
+             bl = new Bl();
+             bl.WrateText($"Попытка запуска точки доступа \t\n");
+                return true;
             }
 
             catch (Exception ex)
             {
-                bl = new Bl();
+               
                 bl.WrateText($"Ошибка при вклчении точки доступа \t\n{ex}");
                 return false;
             }

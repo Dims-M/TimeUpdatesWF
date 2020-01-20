@@ -274,8 +274,8 @@ namespace TimeUpdatesWF
         /// <param name="myText"></param>
         public void WrateText(string myText)
         {
-            //  string tempPathDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string tempPathDir = @"Log"; // Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+          //  string tempPathDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string tempPathDir = @"Log\"; // Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             //DirectoryInfo dirInfo = new DirectoryInfo(@"Log");
 
             FileInfo dirInfo = new FileInfo($"{tempPathDir}"+@"\Log.txt");
@@ -301,7 +301,7 @@ namespace TimeUpdatesWF
                 MessageBox.Show("Ошибка при записи лога \t\n "+ex);
             }
 
-            using (StreamWriter sw = new StreamWriter($"{tempPathDir}" + @"\Log.txt", true, System.Text.Encoding.Default))
+            using (StreamWriter sw = new StreamWriter($"{tempPathDir}" + @"Log.txt", true, System.Text.Encoding.Default))
 
             // using (StreamWriter sw = new StreamWriter(myPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
             {
