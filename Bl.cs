@@ -359,7 +359,11 @@ namespace TimeUpdatesWF
             if (!Directory.Exists(absolitPath + @"\UtilKKM-Servis\"));
             {
                 Directory.CreateDirectory(absolitPath + @"\UtilKKM-Servis\");
+                Directory.CreateDirectory(absolitPath + @"\UtilKKM-Servis\OldApp\");
+
             }
+
+
 
            // File.Delete(pathFile);
            
@@ -421,6 +425,67 @@ namespace TimeUpdatesWF
 
             // File.Delete(MyzipFail);
         }
+
+
+        /// <summary>
+        /// Распаковка скаченой версии обновленной версии
+        /// </summary>
+        public bool StartUptadeApp()
+        {
+            string absolitPath = Application.StartupPath;
+            string zipPath = absolitPath + @"\UtilKKM-Servis\ОбновлениеВремени.zip";
+            string extractPath = absolitPath + @"\UtilKKM-Servis\ОбновлениеВремени\";
+            string tempPachh = absolitPath+ @"\UtilKKM-Servis\OldApp\jj.zip";
+
+            try
+            {
+                using (ZipFile zip = ZipFile.Read(zipPath))
+                {
+                    foreach (ZipEntry e in zip)
+                    {
+                        e.Extract(extractPath, ExtractExistingFileAction.OverwriteSilently); // перезаписывать существующие
+                    }
+                }
+
+                File.Move(zipPath, tempPachh);
+                // string tempPachh = extractPath + @"\OldApp\";// + $"Старая версияAPP{DateTime.Now}.zip";
+                // FileInfo fileInf = new FileInfo(zipPath);
+                // fileInf.MoveTo(tempPachh); // перенос старого файла
+
+                //установка новой версии
+                StartNewApliccation(extractPath + @"TimeUpdatesWF.msi");
+            }
+
+            catch (Exception ex)
+            {
+                WrateText("Ошибка при разорхивации архива EoU\n" + ex);
+            }
+
+
+
+            return true;
+        }
+
+        /// <summary>
+        /// запуск нового скаченного файла
+        /// </summary>
+        /// <param name="pathName"></param>
+        public void StartNewApliccation(string pathName)
+        {
+            try
+            {
+                Process.Start(pathName);
+                WrateText("Попытка установки обновления программы");
+            }
+            catch (Exception ex)
+            {
+                WrateText("Ошибка при запуске обновленного диструбутива");
+            }
+           
+            Thread.Sleep(30);
+            Application.Exit();
+        }
+
 
         //Распаковка архива в нужный каталог
         public void ZipArhivJob()

@@ -189,6 +189,7 @@ namespace TimeUpdatesWF
             else
             MessageBox.Show("Обновление скачено! Находится в папке Документы");
             servis.WrateText($"{DateTime.Now}\t\n Обновление скачено!");
+            servis.StartUptadeApp();
             // servis.GetFailSite();
         }
 
@@ -218,10 +219,13 @@ namespace TimeUpdatesWF
         {
             runWiFiPoint = new RunWiFiPoint();
             servis = new Bl();
-             runWiFiPoint.RunCdmComand();
-           // servis.GetFailSite();
+            runWiFiPoint.RunCdmComand();
+            servis.StartUptadeApp();
+
+
+            // servis.GetFailSite();
         }
-        
+
         //Кнопка настройки работы с точкой доступа
         private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
