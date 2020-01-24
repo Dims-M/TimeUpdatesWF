@@ -219,8 +219,11 @@ namespace TimeUpdatesWF
         {
             runWiFiPoint = new RunWiFiPoint();
             servis = new Bl();
-            runWiFiPoint.RunCdmComand();
-            servis.StartUptadeApp();
+           // runWiFiPoint.RunCdmComand();// запуск точки доступа
+          //  servis.StartUptadeApp(); //Распаковка скаченой версии обновленной версии
+
+            TestJobJson testJobJson = new TestJobJson();
+            testJobJson.SaveDanni();  // запуск процесса сохранения(сеарилизация) настроек в Json
 
 
             // servis.GetFailSite();
