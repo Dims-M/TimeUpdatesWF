@@ -224,6 +224,7 @@ namespace TimeUpdatesWF
 
             TestJobJson testJobJson = new TestJobJson();
             testJobJson.SaveDanni();  // запуск процесса сохранения(сеарилизация) настроек в Json
+            testJobJson.ReadingSettngsJson();  // запуск скачивания настроек в Json с сайта
 
 
             // servis.GetFailSite();

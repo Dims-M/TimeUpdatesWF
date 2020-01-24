@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 
@@ -27,11 +28,10 @@ namespace TimeUpdatesWF
        /// </summary>
        public  void SaveDanni()
         {
-
+            Bl bl = new Bl();
             try
             {
 
-            
             //создаем класс с настройками и заполняем его перед сеарилизацией
             TestSettingsJson testSettingsJson = new TestSettingsJson
             {
@@ -45,17 +45,18 @@ namespace TimeUpdatesWF
             };
              string result = JsonConvert.SerializeObject(testSettingsJson);
 
-            using (StreamWriter sw = new StreamWriter("user.json", true, System.Text.Encoding.Default))
+                //using (StreamWriter sw = new StreamWriter("user.json", true, System.Text.Encoding.Default)) //перезапись файла.
+                using (StreamWriter sw = new StreamWriter("user.json", false, System.Text.Encoding.Default))
 
             // using (StreamWriter sw = new StreamWriter(myPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
             {
                 sw.WriteLine(result ); // запись
-
-            }
+                bl.WrateText("попытка записи файла user.json");
+                }
            }
             catch (Exception ex)
             {
-                Bl bl = new Bl();
+                 
                 bl.WrateText("Ошибка при создании файла настроек user.json");
             }
 
@@ -81,6 +82,49 @@ namespace TimeUpdatesWF
             int i = 0;
 
         }
+
+
+        public void ReadingSettngsJson()
+        {
+            Bl bl = new Bl();
+            // обращаемся к серваку за  за нужным файлом
+           // FtpWebRequest request = (FtpWebRequest)WebRequest.Create("https://testkkm.000webhostapp.com/sett/user.json");
+            // WebRequest request = WebRequest.Create("https://testkkm.000webhostapp.com/sett/user.json");
+
+           // using (WebClient wc = new WebClient()) { data = wc.DownloadString(urlData); }
+
+         //    request.Method = WebRequestMethods.Ftp.DownloadFile;
+            // request.Method = WebRequestMethods.File.DownloadFile; // Выбор каким методом будем работать
+
+            // Логин и пароль. Если нужно
+            // request.Credentials = new NetworkCredential("anonymous", "janeDoe@contoso.com");
+            // WebResponse response = request.GetResponse();
+
+           // FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+
+            using (StreamWriter sw = new StreamWriter("user.json", false, System.Text.Encoding.Default))
+
+            // using (StreamWriter sw = new StreamWriter(myPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
+            {
+                sw.WriteLine(response); // запись
+                bl.WrateText("попытка чтения  файла user.json с сайта ");
+            }
+
+            //FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+
+            //Stream responseStream = response.GetResponseStream();
+            //StreamReader reader = new StreamReader(responseStream);
+
+            //Console.WriteLine(reader.ReadToEnd());
+
+            //Console.WriteLine("Download Complete, status {0}", response.StatusDescription);
+            int f = 1;
+            //reader.Close();
+            //response.Close();
+
+        }
+
+
     }
     }
 
