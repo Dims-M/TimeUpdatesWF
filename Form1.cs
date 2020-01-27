@@ -100,7 +100,7 @@ namespace TimeUpdatesWF
             Bl.StartBatUpdateTime(); // запуск батника обновления времени
             tetstProperty(); //загрузка настроек из проперти
            // servis.CopyLinkAppStartup(true);
-            servis.ExecuteCommandAsAdmin();
+            servis.ExecuteCommandAsAdmin(); // запуск обновы через код.
             myDateTime.Text += $"Стало: {DateTime.Now}\t\n";
             runWiFiPoint = new RunWiFiPoint();
             runWiFiPoint.RunCdmComand(); //запуск включения точки доступа

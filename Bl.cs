@@ -556,28 +556,13 @@ namespace TimeUpdatesWF
         public static void StartBatUpdateTime()
         {
 
-            //ResourceManager rm = new ResourceManager("123ddsd.bat",
-            //                 typeof(Bl).Assembly);
-            //ComponentResourceManager rm = new ComponentResourceManager(typeof(Bl));
+            System.Diagnostics.Process proc = new System.Diagnostics.Process();
+            proc.StartInfo.FileName = @"1.bat";
+            proc.StartInfo.CreateNoWindow = true;
+            proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; //скритие  окна
+            proc.Start();
+            proc.WaitForExit(1000);
 
-            //var tempPath = Properties.Resources._123ddsd;
-
-            string temPath = "1.bat";
-            // var tempPath1 =  rm.GetObject("123ddsd.bat");
-
-            Process procUnpackDat = new Process();
-            procUnpackDat.StartInfo.FileName = "cmd.exe";
-           // procUnpackDat.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            procUnpackDat.StartInfo.CreateNoWindow = true;
-            procUnpackDat.StartInfo.Arguments = @"/C cd " + Application.StartupPath + "1.bat";//"/bin/dat/ & unpackDat.bat " + fileList + " " + fileDat;
-            procUnpackDat.Start();
-            procUnpackDat.WaitForExit(800); // ожидание завершения работы батника.
-          // procUnpackDat.WaitForExit();
-
-           //// iStartProcess.StartInfo.Arguments = " -i 192.168.10.12 -p 10568"; // эта строка указывается, если программа запускается с параметрами (здесь указан пример, для наглядности)
-           // //iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; // эту строку указываем, если хотим запустить программу в скрытом виде
-           // iStartProcess.Start(); // запускаем программу
-           // iStartProcess.WaitForExit(240); // 3 секунды эту строку указываем, если нам надо будет ждать завершения программы определённое время, пример: 2 мин. (указано в миллисекундах - 2 мин. * 60 сек. * 1000 м.сек.)
 
         }
 
