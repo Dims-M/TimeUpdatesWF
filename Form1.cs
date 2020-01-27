@@ -223,7 +223,7 @@ namespace TimeUpdatesWF
           //  servis.StartUptadeApp(); //Распаковка скаченой версии обновленной версии
 
             TestJobJson testJobJson = new TestJobJson();
-            testJobJson.SaveDanni();  // запуск процесса сохранения(сеарилизация) настроек в Json
+          // testJobJson.SaveDanni();  // запуск процесса сохранения(сеарилизация) настроек в Json
             testJobJson.ReadingSettngsJson();  // запуск скачивания настроек в Json с сайта
 
 

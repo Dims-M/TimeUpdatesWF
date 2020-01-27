@@ -83,45 +83,27 @@ namespace TimeUpdatesWF
 
         }
 
-
+        /// <summary>
+        /// получение файла настроек с сайта
+        /// </summary>
         public void ReadingSettngsJson()
         {
             Bl bl = new Bl();
-            // обращаемся к серваку за  за нужным файлом
-           // FtpWebRequest request = (FtpWebRequest)WebRequest.Create("https://testkkm.000webhostapp.com/sett/user.json");
-            // WebRequest request = WebRequest.Create("https://testkkm.000webhostapp.com/sett/user.json");
+            string data; 
+            //Скачивание  с сайта
+            using (WebClient wc = new WebClient()) 
+            { 
+                 data = wc.DownloadString("https://testkkm.000webhostapp.com/sett/user.json"); 
+            }
 
-           // using (WebClient wc = new WebClient()) { data = wc.DownloadString(urlData); }
-
-         //    request.Method = WebRequestMethods.Ftp.DownloadFile;
-            // request.Method = WebRequestMethods.File.DownloadFile; // Выбор каким методом будем работать
-
-            // Логин и пароль. Если нужно
-            // request.Credentials = new NetworkCredential("anonymous", "janeDoe@contoso.com");
-            // WebResponse response = request.GetResponse();
-
-           // FtpWebResponse response = (FtpWebResponse)request.GetResponse();
-
+           //запись в файл на жестоком диске
             using (StreamWriter sw = new StreamWriter("user.json", false, System.Text.Encoding.Default))
-
-            // using (StreamWriter sw = new StreamWriter(myPachDir + @"texLog.txt", true, System.Text.Encoding.Default))
             {
-                sw.WriteLine(response); // запись
+                sw.WriteLine(data); // запись
                 bl.WrateText("попытка чтения  файла user.json с сайта ");
             }
 
-            //FtpWebResponse response = (FtpWebResponse)request.GetResponse();
-
-            //Stream responseStream = response.GetResponseStream();
-            //StreamReader reader = new StreamReader(responseStream);
-
-            //Console.WriteLine(reader.ReadToEnd());
-
-            //Console.WriteLine("Download Complete, status {0}", response.StatusDescription);
-            int f = 1;
-            //reader.Close();
-            //response.Close();
-
+           
         }
 
 
