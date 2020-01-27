@@ -16,7 +16,7 @@
     <ROW Property="ProductCode" Value="1049:{527E53D6-85E1-47D8-92CA-BB9F3C3F3397} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1049"/>
     <ROW Property="ProductName" Value="TimeUpdatesWF"/>
-    <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.0.1" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{2A33E9DD-883F-46FD-B4E9-8E0B0AA695FA}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -171,7 +171,7 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
     <ROW Shortcut="TimeUpdatesWF.exe" Directory_="SHORTCUTDIR" Name="TIMEUP~1.EXE|TimeUpdatesWF.exe" Component_="TimeUpdatesWF.exe" Target="[#TimeUpdatesWF.exe]" Description="TimeUpdatesWF.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR" CustomFlags="1"/>
-    <ROW Shortcut="TimeUpdatesWF.exe_1" Directory_="DesktopFolder" Name="TIMEUP~1.EXE|TimeUpdatesWF.exe" Component_="TimeUpdatesWF.exe" Target="[#TimeUpdatesWF.exe]" Description="TimeUpdatesWF.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+    <ROW Shortcut="TimeUpdatesWF.exe_1" Directory_="DesktopFolder" Name="TIMEUP~1.EXE|TimeUpdatesWF.exe" Component_="TimeUpdatesWF.exe" Target="[#TimeUpdatesWF.exe]" Description="TimeUpdatesWF.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR" CustomFlags="1"/>
     <ROW Shortcut="TimeUpdatesWF.exe_2" Directory_="StartupFolder" Name="TIMEUP~1.EXE|TimeUpdatesWF.exe" Component_="TimeUpdatesWF.exe" Target="[#TimeUpdatesWF.exe]" Description="TimeUpdatesWF.exe" Hotkey="0" IconIndex="0" ShowCmd="7" WkDir="APPDIR" CustomFlags="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">

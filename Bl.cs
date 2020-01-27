@@ -561,7 +561,7 @@ namespace TimeUpdatesWF
             proc.StartInfo.CreateNoWindow = true;
             proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; //скритие  окна
             proc.Start();
-            proc.WaitForExit(1000);
+            proc.WaitForExit(3000);
 
 
         }
