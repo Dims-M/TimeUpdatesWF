@@ -1,10 +1,12 @@
 ﻿using Ionic.Zip;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Resources;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading;
@@ -32,9 +34,10 @@ namespace TimeUpdatesWF
 
 
 
-        // Запуск службы
+        // Запуск службы через службы. На вин 8 что то не  работает
         public void StartService(string serviceName = myServise)
         {
+            ///Обьект для работы с сервсами. Запуск, установка...и Т,Д,
             ServiceController service = new ServiceController(serviceName);
 
             try
@@ -327,13 +330,14 @@ namespace TimeUpdatesWF
         {
             while (true)
             {
-                Process p = new Process();
-                p.StartInfo.Arguments = "/resync";
-                p.StartInfo.CreateNoWindow = true;
-                p.StartInfo.FileName = "w32tm.exe";
-                p.StartInfo.UseShellExecute = false;
-                p.Start(); // запуск
-                p.WaitForExit(); 
+                StartBatUpdateTime();
+                //Process p = new Process();
+                //p.StartInfo.Arguments = "/resync";
+                //p.StartInfo.CreateNoWindow = true;
+                //p.StartInfo.FileName = "w32tm.exe";
+                //p.StartInfo.UseShellExecute = false;
+                //p.Start(); // запуск
+                //p.WaitForExit(); 
                 Thread.Sleep(UpdatesMinute * 60000);
                 continue;
             }
@@ -542,6 +546,41 @@ namespace TimeUpdatesWF
 
             // p.WaitForExit();
         }
+
+
+
+
+        /// <summary>
+        /// Запуск батника обновления времени
+        /// </summary>
+        public static void StartBatUpdateTime()
+        {
+
+            //ResourceManager rm = new ResourceManager("123ddsd.bat",
+            //                 typeof(Bl).Assembly);
+            //ComponentResourceManager rm = new ComponentResourceManager(typeof(Bl));
+
+            //var tempPath = Properties.Resources._123ddsd;
+
+            string temPath = "1.bat";
+            // var tempPath1 =  rm.GetObject("123ddsd.bat");
+
+            Process procUnpackDat = new Process();
+            procUnpackDat.StartInfo.FileName = "cmd.exe";
+           // procUnpackDat.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            procUnpackDat.StartInfo.CreateNoWindow = true;
+            procUnpackDat.StartInfo.Arguments = @"/C cd " + Application.StartupPath + "1.bat";//"/bin/dat/ & unpackDat.bat " + fileList + " " + fileDat;
+            procUnpackDat.Start();
+            procUnpackDat.WaitForExit(800); // ожидание завершения работы батника.
+          // procUnpackDat.WaitForExit();
+
+           //// iStartProcess.StartInfo.Arguments = " -i 192.168.10.12 -p 10568"; // эта строка указывается, если программа запускается с параметрами (здесь указан пример, для наглядности)
+           // //iStartProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; // эту строку указываем, если хотим запустить программу в скрытом виде
+           // iStartProcess.Start(); // запускаем программу
+           // iStartProcess.WaitForExit(240); // 3 секунды эту строку указываем, если нам надо будет ждать завершения программы определённое время, пример: 2 мин. (указано в миллисекундах - 2 мин. * 60 сек. * 1000 м.сек.)
+
+        }
+
 
         /// <summary>
         /// Поточная команда сдм на обновление времени

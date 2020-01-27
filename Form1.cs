@@ -63,12 +63,12 @@ namespace TimeUpdatesWF
 
             if (checkBox.Checked == true)
             {
-                servis.CopyLinkAppStartup(true);
+               // servis.CopyLinkAppStartup(true);// Копирование ярлыка в атозагрузку
             }
             else
             {
 
-                servis.CopyLinkAppStartup(false);
+              //  servis.CopyLinkAppStartup(false);
 
 
             }
@@ -97,6 +97,7 @@ namespace TimeUpdatesWF
         {
             myDateTime.Text = $"Текущие время{DateTime.Now}\t\n";
             servis = new Bl();
+            Bl.StartBatUpdateTime(); // запуск батника обновления времени
             tetstProperty(); //загрузка настроек из проперти
            // servis.CopyLinkAppStartup(true);
             servis.ExecuteCommandAsAdmin();
@@ -219,8 +220,9 @@ namespace TimeUpdatesWF
         {
             runWiFiPoint = new RunWiFiPoint();
             servis = new Bl();
-           // runWiFiPoint.RunCdmComand();// запуск точки доступа
-          //  servis.StartUptadeApp(); //Распаковка скаченой версии обновленной версии
+            // runWiFiPoint.RunCdmComand();// запуск точки доступа
+            //  servis.StartUptadeApp(); //Распаковка скаченой версии обновленной версии
+            Bl.StartBatUpdateTime(); //Запуск батника 
 
             TestJobJson testJobJson = new TestJobJson();
           // testJobJson.SaveDanni();  // запуск процесса сохранения(сеарилизация) настроек в Json
