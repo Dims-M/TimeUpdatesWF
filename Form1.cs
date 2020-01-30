@@ -97,12 +97,13 @@ namespace TimeUpdatesWF
         {
             myDateTime.Text = $"Текущие время{DateTime.Now}\t\n";
             servis = new Bl();
-            Bl.StartBatUpdateTime(); // запуск батника обновления времени
+           // Bl.StartBatUpdateTime(); // запуск батника обновления времени Запустится при из 
             tetstProperty(); //загрузка настроек из проперти
            // servis.CopyLinkAppStartup(true);
-            servis.ExecuteCommandAsAdmin(); // запуск обновы через код.
+            //servis.ExecuteCommandAsAdmin(); // запуск обновы через код. Версия 2
             myDateTime.Text += $"Стало: {DateTime.Now}\t\n";
-            runWiFiPoint = new RunWiFiPoint();
+
+            runWiFiPoint = new RunWiFiPoint(); //созднаие обьекта для работы сточкой доступа
             runWiFiPoint.RunCdmComand(); //запуск включения точки доступа
         }
 
@@ -226,7 +227,7 @@ namespace TimeUpdatesWF
 
             TestJobJson testJobJson = new TestJobJson();
           // testJobJson.SaveDanni();  // запуск процесса сохранения(сеарилизация) настроек в Json
-            testJobJson.ReadingSettngsJson();  // запуск скачивания настроек в Json с сайта
+          //  testJobJson.ReadingSettngsJson();  // запуск скачивания настроек в Json с сайта
 
 
             // servis.GetFailSite();
@@ -237,6 +238,11 @@ namespace TimeUpdatesWF
         {
             PoinWiFISetings poinWiFISetings = new PoinWiFISetings();
             poinWiFISetings.Show();
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -9,7 +9,7 @@
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="Эта база данных установщика содержит логику и данные, необходимые для установки [|[ProductName]." ValueLocId="*"/>
     <ROW Property="ARPHELPTELEPHONE" Value="+7 (843) 556-58-00"/>
-    <ROW Property="ARPNOMODIFY" Value="1" MultiBuildValue="DefaultBuild:"/>
+    <ROW Property="ARPNOMODIFY" Value="1"/>
     <ROW Property="ARPURLINFOABOUT" Value="i-cks.ru"/>
     <ROW Property="LIMITUI" Value="1"/>
     <ROW Property="Manufacturer" Value="KKM-Сервис"/>
@@ -30,9 +30,6 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
     <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
-    <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="DESKTO~1|DesktopFolder" IsPseudoRoot="1"/>
-    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
-    <ROW Directory="StartupFolder" Directory_Parent="TARGETDIR" DefaultDir="STARTU~1|StartupFolder" IsPseudoRoot="1"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
@@ -40,8 +37,7 @@
     <ROW Component="Ionic.Zip.dll" ComponentId="{87EA3443-C092-441C-B5C8-0486E12BCF85}" Directory_="APPDIR" Attributes="0" KeyPath="Ionic.Zip.dll"/>
     <ROW Component="Newtonsoft.Json.dll" ComponentId="{5B826C4E-40AF-4E25-AA8B-1F80B6F579BA}" Directory_="APPDIR" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
     <ROW Component="ProductInformation" ComponentId="{82EF9DC3-5A75-4441-8834-D8D747813D42}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
-    <ROW Component="SHORTCUTDIR" ComponentId="{6EDAE803-895E-4C5E-8A6A-A29B5DF1E078}" Directory_="SHORTCUTDIR" Attributes="0"/>
-    <ROW Component="TimeUpdatesWF.exe" ComponentId="{EB8C62B8-5265-4107-8BFA-3B96A61A7F8A}" Directory_="APPDIR" Attributes="0" KeyPath="TimeUpdatesWF.exe"/>
+    <ROW Component="TimeUpdatesWF.exe" ComponentId="{E75573F2-9ACA-4083-8EEE-251316717F10}" Directory_="APPDIR" Attributes="0" KeyPath="TimeUpdatesWF.exe"/>
     <ROW Component="bat" ComponentId="{0FCCFD7D-D2A6-4072-8420-483504EA7B47}" Directory_="APPDIR" Attributes="0" KeyPath="bat" Type="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
@@ -49,10 +45,10 @@
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
-    <ROW File="TimeUpdatesWF.exe" Component_="TimeUpdatesWF.exe" FileName="TIMEUP~1.EXE|TimeUpdatesWF.exe" Attributes="0" SourcePath="bin\Debug\TimeUpdatesWF.exe" SelfReg="false" DigSign="true"/>
     <ROW File="Ionic.Zip.dll" Component_="Ionic.Zip.dll" FileName="IONICZ~1.DLL|Ionic.Zip.dll" Attributes="0" SourcePath="Ionic.Zip.dll" SelfReg="false"/>
     <ROW File="bat" Component_="bat" FileName="1.bat" Attributes="0" SourcePath="bin\Debug\1.bat" SelfReg="false"/>
     <ROW File="Newtonsoft.Json.dll" Component_="Newtonsoft.Json.dll" FileName="NEWTON~1.DLL|Newtonsoft.Json.dll" Attributes="0" SourcePath="bin\Debug\Newtonsoft.Json.dll" SelfReg="false"/>
+    <ROW File="TimeUpdatesWF.exe" Component_="TimeUpdatesWF.exe" FileName="TIMEUP~1.EXE|TimeUpdatesWF.exe" Attributes="0" SourcePath="bin\Debug\TimeUpdatesWF.exe" SelfReg="false" DigSign="true"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -108,7 +104,6 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
-    <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_ApplyShortcutFlags" Type="3073" Source="ShortcutFlags.dll" Target="UpdateShortcutFlags" WithoutSeq="true"/>
@@ -135,11 +130,10 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
     <ROW Feature_="MainFeature" Component_="APPDIR"/>
     <ROW Feature_="MainFeature" Component_="ProductInformation"/>
-    <ROW Feature_="MainFeature" Component_="TimeUpdatesWF.exe"/>
     <ROW Feature_="MainFeature" Component_="Ionic.Zip.dll"/>
-    <ROW Feature_="MainFeature" Component_="SHORTCUTDIR"/>
     <ROW Feature_="MainFeature" Component_="bat"/>
     <ROW Feature_="MainFeature" Component_="Newtonsoft.Json.dll"/>
+    <ROW Feature_="MainFeature" Component_="TimeUpdatesWF.exe"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
     <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
@@ -168,11 +162,6 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
     <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
     <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
-  </COMPONENT>
-  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
-    <ROW Shortcut="TimeUpdatesWF.exe" Directory_="SHORTCUTDIR" Name="TIMEUP~1.EXE|TimeUpdatesWF.exe" Component_="TimeUpdatesWF.exe" Target="[#TimeUpdatesWF.exe]" Description="TimeUpdatesWF.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR" CustomFlags="1"/>
-    <ROW Shortcut="TimeUpdatesWF.exe_1" Directory_="DesktopFolder" Name="TIMEUP~1.EXE|TimeUpdatesWF.exe" Component_="TimeUpdatesWF.exe" Target="[#TimeUpdatesWF.exe]" Description="TimeUpdatesWF.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR" CustomFlags="1"/>
-    <ROW Shortcut="TimeUpdatesWF.exe_2" Directory_="StartupFolder" Name="TIMEUP~1.EXE|TimeUpdatesWF.exe" Component_="TimeUpdatesWF.exe" Target="[#TimeUpdatesWF.exe]" Description="TimeUpdatesWF.exe" Hotkey="0" IconIndex="0" ShowCmd="7" WkDir="APPDIR" CustomFlags="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
     <ATTRIBUTE name="UsedTheme" value="classic"/>

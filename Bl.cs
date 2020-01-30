@@ -330,7 +330,7 @@ namespace TimeUpdatesWF
         {
             while (true)
             {
-                StartBatUpdateTime();
+                StartBatUpdateTime(); // один раз срабытывает при запуске приложения
                 //Process p = new Process();
                 //p.StartInfo.Arguments = "/resync";
                 //p.StartInfo.CreateNoWindow = true;
@@ -558,8 +558,8 @@ namespace TimeUpdatesWF
 
             System.Diagnostics.Process proc = new System.Diagnostics.Process();
             proc.StartInfo.FileName = @"1.bat";
-            proc.StartInfo.CreateNoWindow = true;
-            proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; //скритие  окна
+            proc.StartInfo.CreateNoWindow = false;
+          //  proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; //скрытиетие  окна
             proc.Start();
             proc.WaitForExit(3000);
 

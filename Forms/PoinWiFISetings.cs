@@ -29,6 +29,8 @@ namespace TimeUpdatesWF.Forms
         {
             runWiFiPoint = new RunWiFiPoint();
             runWiFiPoint.CreatPoinWiFi(); // Создание точки доступа
+            label1.Text = @"Имя точки доступа = Centr_KKM_Servis ";
+            label2.Text = $"Пароль подключения к интернету = k51215045";
 
         }
 
