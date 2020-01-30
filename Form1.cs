@@ -39,8 +39,8 @@ namespace TimeUpdatesWF
             servis = new Bl();
             servis.StartService();
             // TestVariable();
-          string temp = servis.ExecuteCommandAsAdmin();
-          label1.Text = temp;
+       //   string temp = servis.ExecuteCommandAsAdmin();
+        //  label1.Text = temp;
 
           //  servis.TestStart(); // тестовой метод
 
@@ -191,6 +191,7 @@ namespace TimeUpdatesWF
             else
             MessageBox.Show("Обновление скачено! Находится в папке Документы");
             servis.WrateText($"{DateTime.Now}\t\n Обновление скачено!");
+          //  пппп
             servis.StartUptadeApp();
             // servis.GetFailSite();
         }
@@ -221,15 +222,21 @@ namespace TimeUpdatesWF
         {
             runWiFiPoint = new RunWiFiPoint();
             servis = new Bl();
+          //  Bl.StartBatUpdateTime(); //Запуск батника 
+
+
+            //Тестовые методы
+
+            servis.DeleteApp(); //метод удаление
             // runWiFiPoint.RunCdmComand();// запуск точки доступа
             //  servis.StartUptadeApp(); //Распаковка скаченой версии обновленной версии
-            Bl.StartBatUpdateTime(); //Запуск батника 
+           
 
-            TestJobJson testJobJson = new TestJobJson();
-          // testJobJson.SaveDanni();  // запуск процесса сохранения(сеарилизация) настроек в Json
-          //  testJobJson.ReadingSettngsJson();  // запуск скачивания настроек в Json с сайта
-
-
+            
+            // testJobJson.SaveDanni();  // запуск процесса сохранения(сеарилизация) настроек в Json
+            //  testJobJson.ReadingSettngsJson();  // запуск скачивания настроек в Json с сайта
+           
+              TestJobJson testJobJson = new TestJobJson();
             // servis.GetFailSite();
         }
 

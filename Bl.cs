@@ -20,7 +20,7 @@ namespace TimeUpdatesWF
         /// <summary>
         /// Класс для работы с логикой
         /// </summary>
-       
+
         private const string myServise = "W32Time";
         private static int UpdatesMinute = 60;
         string tempLog = "";
@@ -30,7 +30,7 @@ namespace TimeUpdatesWF
 
 
         //запускаем служюу обновления времени в отдельном потоке
-        public static  Thread myThread = new Thread(new ThreadStart(TimeSynchronization));
+        public static Thread myThread = new Thread(new ThreadStart(TimeSynchronization));
 
 
 
@@ -46,10 +46,10 @@ namespace TimeUpdatesWF
                 // Проверяем не запущена ли служба
                 if (service.Status != ServiceControllerStatus.Running)
                 {
-                   
+
                     // Запускаем службу
                     service.Start();
-                   
+
                     // В течении минуты ждём статус от службы
                     service.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromMinutes(1));
                     // Console.WriteLine("Служба была успешно запущена!");
@@ -57,7 +57,7 @@ namespace TimeUpdatesWF
 
                 else if (service.Status != ServiceControllerStatus.Stopped)
                 {
-                   // service.Continue();
+                    // service.Continue();
                 }
 
                 else
@@ -65,9 +65,9 @@ namespace TimeUpdatesWF
                     // Console.WriteLine("Служба уже запущена!");
                 }
 
-                
 
-                }
+
+            }
             catch (Exception ex)
             {
                 tempLog = $"Произошла ошибка при запуске службы \t\n{ex}";
@@ -170,7 +170,7 @@ namespace TimeUpdatesWF
                 service.Dispose();
             }
         }
-        
+
 
         // Перезапуск службы
         public void RestartService(string serviceName = myServise)
@@ -234,12 +234,12 @@ namespace TimeUpdatesWF
             String s3 = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
             string pathApp = Application.StartupPath;
             string a = @"\TimeUpdatesWF.exe";
-            string b = pathApp; 
+            string b = pathApp;
             string c = s3;
 
             try
             {
-                if (swixh!=false)
+                if (swixh != false)
                 {
                     #region НЕ смотреть
                     // var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
@@ -277,11 +277,11 @@ namespace TimeUpdatesWF
         /// <param name="myText"></param>
         public void WrateText(string myText)
         {
-          //  string tempPathDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            //  string tempPathDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string tempPathDir = @"Log\"; // Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             //DirectoryInfo dirInfo = new DirectoryInfo(@"Log");
 
-            FileInfo dirInfo = new FileInfo($"{tempPathDir}"+@"\Log.txt");
+            FileInfo dirInfo = new FileInfo($"{tempPathDir}" + @"\Log.txt");
             DirectoryInfo directoryInfo = new DirectoryInfo(tempPathDir);
 
 
@@ -301,7 +301,7 @@ namespace TimeUpdatesWF
 
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка при записи лога \t\n "+ex);
+                MessageBox.Show("Ошибка при записи лога \t\n " + ex);
             }
 
             using (StreamWriter sw = new StreamWriter($"{tempPathDir}" + @"Log.txt", true, System.Text.Encoding.Default))
@@ -317,9 +317,9 @@ namespace TimeUpdatesWF
         /// Запуск потока обновления времени
         /// </summary>
         /// <param name="z"></param>
-        public  void Cikle()
+        public void Cikle()
         {
-           myThread.Start(); // запускаем поток   
+            myThread.Start(); // запускаем поток   
         }
 
         /// <summary>
@@ -341,7 +341,7 @@ namespace TimeUpdatesWF
                 Thread.Sleep(UpdatesMinute * 60000);
                 continue;
             }
-          
+
         }
 
 
@@ -350,17 +350,17 @@ namespace TimeUpdatesWF
         /// </summary>
         public bool GetFailSite()
         {
-           
+
             string errorLog = $"{DateTime.Now.ToString()}\t\n";
-           // string pathFile =  Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+ $@"\UtilKKM-Servis\ОбновлениеВремени{errorLog}.zip"; // загрузка обновления
+            // string pathFile =  Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+ $@"\UtilKKM-Servis\ОбновлениеВремени{errorLog}.zip"; // загрузка обновления
             //string pathFile = Application.ExecutablePath + $@"\UtilKKM-Servis\ОбновлениеВремени{errorLog}.zip"; // загрузка обновления
-           // string pathFile = Application.StartupPath + @"\UtilKKM-Servis\ОбновлениеВремени.zip"; // загрузка обновления
+            // string pathFile = Application.StartupPath + @"\UtilKKM-Servis\ОбновлениеВремени.zip"; // загрузка обновления
             string pathFile = Application.StartupPath + @"\UtilKKM-Servis\ОбновлениеВремени.zip"; // загрузка обновления
             string serFtp = @"https://testkkm.000webhostapp.com/GetUpTime/TimeUpdatesWF.zip";
             string absolitPath = Application.StartupPath;
             bool resul = false;
 
-            if (!Directory.Exists(absolitPath + @"\UtilKKM-Servis\"));
+            if (!Directory.Exists(absolitPath + @"\UtilKKM-Servis\")) ;
             {
                 Directory.CreateDirectory(absolitPath + @"\UtilKKM-Servis\");
                 Directory.CreateDirectory(absolitPath + @"\UtilKKM-Servis\OldApp\");
@@ -369,8 +369,8 @@ namespace TimeUpdatesWF
 
 
 
-           // File.Delete(pathFile);
-           
+            // File.Delete(pathFile);
+
 
             //if (System.IO.File.Exists(pathFile))
             //{
@@ -380,25 +380,25 @@ namespace TimeUpdatesWF
             //    errorLog += $"Старый файл был удален \t\n{serFtp}\t\n";
             //}
 
-           //else 
-            
-                File.Delete(pathFile);
-                using (var web = new WebClient())
+            //else 
+
+            File.Delete(pathFile);
+            using (var web = new WebClient())
+            {
+                try
                 {
-                    try
-                    {
-                        // скачиваем откуда и куда
-                        web.DownloadFile(serFtp, pathFile);
+                    // скачиваем откуда и куда
+                    web.DownloadFile(serFtp, pathFile);
                     resul = true;
 
-                    }
-                    catch (Exception ex)
-                    {
-                        WrateText("Ошибка при скачивании обновлений \t\n"+ex);
-                        resul = false;
-                    }
                 }
-            
+                catch (Exception ex)
+                {
+                    WrateText("Ошибка при скачивании обновлений \t\n" + ex);
+                    resul = false;
+                }
+            }
+
             return resul;
         }
 
@@ -439,7 +439,7 @@ namespace TimeUpdatesWF
             string absolitPath = Application.StartupPath;
             string zipPath = absolitPath + @"\UtilKKM-Servis\ОбновлениеВремени.zip";
             string extractPath = absolitPath + @"\UtilKKM-Servis\ОбновлениеВремени\";
-            string tempPachh = absolitPath+ @"\UtilKKM-Servis\OldApp\jj.zip";
+            string tempPachh = absolitPath + @"\UtilKKM-Servis\OldApp\jj.zip";
 
             try
             {
@@ -485,7 +485,7 @@ namespace TimeUpdatesWF
             {
                 WrateText("Ошибка при запуске обновленного диструбутива");
             }
-           
+
             Thread.Sleep(30);
             Application.Exit();
         }
@@ -499,7 +499,7 @@ namespace TimeUpdatesWF
 
             try
             {
-               // ZipFile.ExtractToDirectory(zipPath, extractPath);
+                // ZipFile.ExtractToDirectory(zipPath, extractPath);
             }
 
             catch (Exception ex)
@@ -522,25 +522,25 @@ namespace TimeUpdatesWF
 
             Process p = new Process();
             // p.StartInfo.Arguments = "/resync";
-           // p.StartInfo.Arguments = @"/manualpeerlist:time.windows.com /syncfromflags:manual /reliable:yes /update";
-          //  p.StartInfo.Arguments = "/config/syncfromflags:manual/manualpeerlist:time.windows.com";
+            // p.StartInfo.Arguments = @"/manualpeerlist:time.windows.com /syncfromflags:manual /reliable:yes /update";
+            //  p.StartInfo.Arguments = "/config/syncfromflags:manual/manualpeerlist:time.windows.com";
             // p.StartInfo.Arguments = @"//server.lan.local/set/y";
 
-           // p.StartInfo.CreateNoWindow = false;
-           // p.StartInfo.FileName = "w32time";
-           // p.StartInfo.FileName = "w32tm.exe";
-           // p.StartInfo.UseShellExecute = false;
+            // p.StartInfo.CreateNoWindow = false;
+            // p.StartInfo.FileName = "w32time";
+            // p.StartInfo.FileName = "w32tm.exe";
+            // p.StartInfo.UseShellExecute = false;
             // p.Start(); // запуск
 
             string command = @"w32tm /config /syncfromflags:manual /manualpeerlist:88.147.254.232";
             var startInfo = new ProcessStartInfo();
             startInfo.FileName = "cmd";
             startInfo.Arguments = "/c " + command;
-           // startInfo.Arguments = "/c " + "";
+            // startInfo.Arguments = "/c " + "";
             startInfo.UseShellExecute = true;
 
             startInfo.Verb = "runas"; // run elevated            
-           
+
             //var proc = Process.Start(startInfo);
             //Console.WriteLine(proc);
 
@@ -559,34 +559,32 @@ namespace TimeUpdatesWF
             System.Diagnostics.Process proc = new System.Diagnostics.Process();
             proc.StartInfo.FileName = @"1.bat";
             proc.StartInfo.CreateNoWindow = false;
-          //  proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; //скрытиетие  окна
+            //  proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; //скрытиетие  окна
             proc.Start();
             proc.WaitForExit(3000);
-
-
         }
 
 
-        /// <summary>
-        /// Поточная команда сдм на обновление времени
-        /// </summary>
-        /// <returns></returns>
-        public string ExecuteCommandAsAdmin()
+        public void DeleteApp()
         {
             try
             {
-                //string command = @"w32tm /config /syncfromflags:manual /manualpeerlist:88.147.254.232";
-                //string command = @"w32tm /config /syncfromflags:manual /manualpeerlist:88.147.254.232";
-                string command = @"w32tm /config /manualpeerlist:time.windows.com /syncfromflags:manual /reliable:yes /update";
-                string tempLog = "";
 
-                ProcessStartInfo procStartInfo = new ProcessStartInfo()
+            }
+           
+            //получаем путь текущего прилоложения.
+            string pathApp2 = Application.StartupPath;
+            string pathApp = @"C:\Users\Dim\Documents\Advanced Installer\Projects\TimeUpdatesWF\Setup Files\ff";
+
+            string command = $@"del /F /S /Q /A  %{pathApp}%\*.* ";
+
+            ProcessStartInfo procStartInfo = new ProcessStartInfo()
             {
                 RedirectStandardError = true,
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
-                CreateNoWindow = true,
-                FileName = "runas.exe",
+                CreateNoWindow = true, // сознание нового окна
+                FileName = "runas.exe", // запуск по админом.
                 Arguments = "/user:Administrator \"cmd /c" + command + "\""
             };
 
@@ -594,26 +592,69 @@ namespace TimeUpdatesWF
             {
                 proc.StartInfo = procStartInfo;
                 proc.Start();
-                Thread.Sleep(300);
-                    //string output = proc.StandardOutput.ReadToEnd();
+                // Thread.Sleep(300);
+                //string output = proc.StandardOutput.ReadToEnd();
 
-                    //if (string.IsNullOrEmpty(output))
-                    //    output = proc.StandardError.ReadToEnd();
-                    proc.Close();
-                    return "Обновление времени";
-            }
-               
-            }
+                //if (string.IsNullOrEmpty(output))
+                //    output = proc.StandardError.ReadToEnd();
+                proc.Close();
 
-            catch (Exception ex)
+                //  ss
+            }
+             catch ()
             {
-                tempLog = ex.ToString();
-                WrateText(tempLog);
-                return tempLog;
-            }
 
-            //return tempLog;
+            }
         }
+
+
+            /// <summary>
+            /// Поточная команда сдм на обновление времени
+            /// </summary>
+            /// <returns></returns>
+            public string ExecuteCommandAsAdmin()
+            {
+                try
+                {
+                    //string command = @"w32tm /config /syncfromflags:manual /manualpeerlist:88.147.254.232";
+                    //string command = @"w32tm /config /syncfromflags:manual /manualpeerlist:88.147.254.232";
+                    string command = @"w32tm /config /manualpeerlist:time.windows.com /syncfromflags:manual /reliable:yes /update";
+                    string tempLog = "";
+
+                    ProcessStartInfo procStartInfo = new ProcessStartInfo()
+                    {
+                        RedirectStandardError = true,
+                        RedirectStandardOutput = true,
+                        UseShellExecute = false,
+                        CreateNoWindow = true,
+                        FileName = "runas.exe",
+                        Arguments = "/user:Administrator \"cmd /c" + command + "\""
+                    };
+
+                    using (Process proc = new Process())
+                    {
+                        proc.StartInfo = procStartInfo;
+                        proc.Start();
+                        Thread.Sleep(300);
+                        //string output = proc.StandardOutput.ReadToEnd();
+
+                        //if (string.IsNullOrEmpty(output))
+                        //    output = proc.StandardError.ReadToEnd();
+                        proc.Close();
+                        return "Обновление времени";
+                    }
+
+                }
+
+                catch (Exception ex)
+                {
+                    tempLog = ex.ToString();
+                    WrateText(tempLog);
+                    return tempLog;
+                }
+
+                //return tempLog;
+            }
 
             #region Тестовой метод проверки обновления
             ///// <summary>
@@ -655,6 +696,7 @@ namespace TimeUpdatesWF
             #endregion
 
         }
+    
 }
 
 
