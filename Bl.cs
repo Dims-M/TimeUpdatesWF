@@ -570,7 +570,7 @@ namespace TimeUpdatesWF
             try
             {
 
-            }
+           
            
             //получаем путь текущего прилоложения.
             string pathApp2 = Application.StartupPath;
@@ -601,9 +601,11 @@ namespace TimeUpdatesWF
 
                 //  ss
             }
-             catch ()
-            {
 
+            }
+            catch (Exception ex)
+            {
+                WrateText($"Ошибка при удалении стагого exe \t\n{ex}");
             }
         }
 

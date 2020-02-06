@@ -39,6 +39,8 @@ namespace TimeUpdatesWF.Forms
             runWiFiPoint = new RunWiFiPoint();
            
             runWiFiPoint.RunCdmComand(); // запуск точки доступа
+            labelNamePoinWiFi.Text = "ИМЯ Точки доступа Centr_KKM_Servis";
+            labellabelPasswordPoinWiFi.Text = "ПАРОЛЬ для подключения k51215045";
         }
 
         private void PoinWiFISetings_Load(object sender, EventArgs e)
