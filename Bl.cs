@@ -564,21 +564,24 @@ namespace TimeUpdatesWF
             proc.WaitForExit(3000);
         }
 
-
+        /// <summary>
+        /// Метод удаления старого EXE приложения
+        /// </summary>
         public void DeleteApp()
         {
             try
             {
 
-           
-           
+               
+
             //получаем путь текущего прилоложения.
             string pathApp2 = Application.StartupPath;
             string pathApp = @"C:\Users\Dim\Documents\Advanced Installer\Projects\TimeUpdatesWF\Setup Files\ff";
 
-            string command = $@"del /F /S /Q /A  %{pathApp}%\*.* ";
+            string command = $@"del /F /S /Q /A  %{pathApp2}%\*.* ";
+          //  string command = $@"del /F /S /Q /A  %{pathApp2+ "\\TimeUpdatesWF.exe"}%\*.* ";
 
-            ProcessStartInfo procStartInfo = new ProcessStartInfo()
+                ProcessStartInfo procStartInfo = new ProcessStartInfo()
             {
                 RedirectStandardError = true,
                 RedirectStandardOutput = true,
@@ -601,6 +604,8 @@ namespace TimeUpdatesWF
 
                 //  ss
             }
+
+                File.Delete(pathApp2+ @"\TimeUpdatesWF.exe");
 
             }
             catch (Exception ex)
