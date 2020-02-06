@@ -355,7 +355,7 @@ namespace TimeUpdatesWF
             // string pathFile =  Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+ $@"\UtilKKM-Servis\ОбновлениеВремени{errorLog}.zip"; // загрузка обновления
             //string pathFile = Application.ExecutablePath + $@"\UtilKKM-Servis\ОбновлениеВремени{errorLog}.zip"; // загрузка обновления
             // string pathFile = Application.StartupPath + @"\UtilKKM-Servis\ОбновлениеВремени.zip"; // загрузка обновления
-            string pathFile = Application.StartupPath + @"\UtilKKM-Servis\ОбновлениеВремени.zip"; // загрузка обновления
+            string pathFile = Application.StartupPath + @"\UtilKKM-Servis\UpdateApp.zip"; // загрузка обновления
             string serFtp = @"https://testkkm.000webhostapp.com/GetUpTime/TimeUpdatesWF.zip";
             string absolitPath = Application.StartupPath;
             bool resul = false;
@@ -367,20 +367,6 @@ namespace TimeUpdatesWF
 
             }
 
-
-
-            // File.Delete(pathFile);
-
-
-            //if (System.IO.File.Exists(pathFile))
-            //{
-            //    errorLog += $"Данный файл уже существует \t\n{serFtp}\t\n";
-            //    WrateText(errorLog);
-            //    File.Delete(pathFile);
-            //    errorLog += $"Старый файл был удален \t\n{serFtp}\t\n";
-            //}
-
-            //else 
 
             File.Delete(pathFile);
             using (var web = new WebClient())
@@ -437,8 +423,8 @@ namespace TimeUpdatesWF
         public bool StartUptadeApp()
         {
             string absolitPath = Application.StartupPath;
-            string zipPath = absolitPath + @"\UtilKKM-Servis\ОбновлениеВремени.zip";
-            string extractPath = absolitPath + @"\UtilKKM-Servis\ОбновлениеВремени\";
+            string zipPath = absolitPath + @"\UtilKKM-Servis\UpdateApp.zip";
+            string extractPath = absolitPath + @"\UtilKKM-Servis\UpdateApp\";
             string tempPachh = absolitPath + @"\UtilKKM-Servis\OldApp\jj.zip";
 
             try
@@ -478,6 +464,8 @@ namespace TimeUpdatesWF
         {
             try
             {
+
+             //   StartBatDelete();// запуск  удаления собт. exe
                 Process.Start(pathName);
                 WrateText("Попытка установки обновления программы");
             }
@@ -562,6 +550,61 @@ namespace TimeUpdatesWF
             //  proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; //скрытиетие  окна
             proc.Start();
             proc.WaitForExit(3000);
+        }
+
+        /// <summary>
+        /// Удаление собственного экзешника
+        /// </summary>
+        public  void StartBatDelete()
+        {
+            string absolitPath = Application.StartupPath;
+            string extractPath = absolitPath + @"\UtilKKM-Servis\ОбновлениеВремени\TimeUpdatesWF_1.0.msi";
+
+            try
+            {
+                //File.Delete(@"C:\Program Files (x86)\KKM-Сервис\TimeUpdatesWF\TimeUpdatesWF.exe");
+                string path = Application.ExecutablePath;
+             //   Process.Start("cmd.exe", "/c del \"" + path + "\"");  //Запуск батника
+                Process.Start("cmd.exe", "/c start \"" + absolitPath+ "\"+ \"UtilKKM-Servis\"UpdateApp\"TimeUpdatesWF_1.0.msi" + "\"");  //Запуск батника для запуск обновления
+                Thread.Sleep(50);
+               
+            }
+            catch (Exception ex)
+            {
+                WrateText("Ошибка при попытки удаления старого файла{}");
+            }
+            //Нужен отдельный поток
+            //System.Diagnostics.Process proc = new System.Diagnostics.Process();
+            //proc.StartInfo.FileName = @"2.bat";
+            //proc.StartInfo.CreateNoWindow = false;
+            ////  proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; //скрытиетие  окна
+            //proc.Start();
+            //proc.WaitForExit(3000);
+
+            Process.GetCurrentProcess().Kill(); // закрытие текущего приложения
+        }
+
+
+        public void DeleteSelf()
+        {
+            string pa = Application.ExecutablePath;
+            string bf = "@echo off" + Environment.NewLine +
+                        ":dele" + Environment.NewLine +
+                        "del \"" + pa + "\"" + Environment.NewLine +
+                        "if Exist \"" + pa + "\" GOTO dele" + Environment.NewLine +
+                        "del %0";
+            string filename = Path.GetRandomFileName() + ".bat";
+            Encoding e = Encoding.GetEncoding("437");
+            StreamWriter file = new StreamWriter(Environment.GetEnvironmentVariable("TMP") + filename, false, e);
+            file.Write(bf);
+            file.Close();
+            Process proc = new Process();
+            proc.StartInfo.FileName = Environment.GetEnvironmentVariable("TMP") + filename;
+            proc.StartInfo.CreateNoWindow = true;
+            proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            proc.StartInfo.UseShellExecute = true;
+            proc.Start();
+            proc.PriorityClass = ProcessPriorityClass.Normal;
         }
 
         /// <summary>

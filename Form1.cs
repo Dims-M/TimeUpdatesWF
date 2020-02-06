@@ -222,21 +222,22 @@ namespace TimeUpdatesWF
         {
             runWiFiPoint = new RunWiFiPoint();
             servis = new Bl();
-          //  Bl.StartBatUpdateTime(); //Запуск батника 
+            //  Bl.StartBatUpdateTime(); //Запуск батника 
 
 
             //Тестовые методы
 
-            servis.DeleteApp(); //метод удаление
+            // servis.DeleteApp(); //метод удаление
             // runWiFiPoint.RunCdmComand();// запуск точки доступа
             //  servis.StartUptadeApp(); //Распаковка скаченой версии обновленной версии
-           
 
-            
+              servis.StartBatDelete(); // удаление старой папки с программой
+             // servis.DeleteSelf();
+
             // testJobJson.SaveDanni();  // запуск процесса сохранения(сеарилизация) настроек в Json
             //  testJobJson.ReadingSettngsJson();  // запуск скачивания настроек в Json с сайта
-           
-              TestJobJson testJobJson = new TestJobJson();
+
+            TestJobJson testJobJson = new TestJobJson();
             // servis.GetFailSite();
         }
 
