@@ -213,7 +213,7 @@ namespace TimeUpdatesWF
         public bool InitMinutes(int myMinutes)
         {
             UpdatesMinute = myMinutes;
-            WrateText($"Время обновление изменено на {myMinutes}");
+           // WrateText($"Время обновление изменено на {myMinutes}");
             return true;
         }
 
@@ -356,7 +356,7 @@ namespace TimeUpdatesWF
             //string pathFile = Application.ExecutablePath + $@"\UtilKKM-Servis\ОбновлениеВремени{errorLog}.zip"; // загрузка обновления
             // string pathFile = Application.StartupPath + @"\UtilKKM-Servis\ОбновлениеВремени.zip"; // загрузка обновления
             string pathFile = Application.StartupPath + @"\UtilKKM-Servis\UpdateApp.zip"; // загрузка обновления
-            string serFtp = @"https://testkkm.000webhostapp.com/GetUpTime/TimeUpdatesWF.zip";
+            string serFtp = @"https://testkkm.000webhostapp.com/GetUpTime/TimeUpdates.zip";
             string absolitPath = Application.StartupPath;
             bool resul = false;
 
