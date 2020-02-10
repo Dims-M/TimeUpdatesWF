@@ -20,7 +20,7 @@ namespace TimeUpdatesWF.Forms
         {
             Bl bl = new Bl();
 
-            pictureBox1.Image = bl.CreateBitmapImage("Testttt");
+            pictureBox1.Image = bl.CreateBitmapImage("Testtttdtvyhtyhvrtjvyjyjyuy");
         }
     }
 }
