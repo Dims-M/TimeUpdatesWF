@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -706,46 +707,86 @@ namespace TimeUpdatesWF
                 //return tempLog;
             }
 
-            #region Тестовой метод проверки обновления
-            ///// <summary>
-            ///// ****
-            ///// </summary>
-            ///// <returns></returns>
-            ////Тестовой метод проверки обновления
-            //public bool Сheck()
-            //{
-            //   // VersionChecker verChecker = new VersionChecker();
-            //    string s = "";
-            //    string localVersion = "";
-            //    try
-            //    {
-            //        while (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable()) //ждем пока подрубимся к сети
-            //        {
-            //            System.Threading.Thread.Sleep(60000);
-            //        }
-            //        localVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); //получение версии запущенной программы
-            //        WebClient w = new WebClient();
-            //        s = w.DownloadString("http:// domen.ru/version.txt");
-            //        w.Dispose();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //       // errors(ex.Message);
-            //    }
-            //    string[] q = s.Split(‘|’); // у меня в файле указана не только версия, но и адрес для загрузки последней версии программы через знак ‘|’
-            //    //if (verChecker.NewVersionExists(localVersion, q[0])) // отправляем две версии другому методу для их сверки
-            //    //{
-            //    //    load_obnovlenie(q[1]); //версия старая и запускаем метод по обновлению нашей программы(будет в следующей статье)
-            //    //}
-            //    else
-            //    {
-            //        return false; //версия новая
-            //    }
-            //    return true; //даем знать основной команде, которая вызвала метод, что мол, есть обнова и лучше нам пока не начинать работать
-            //}
-            #endregion
 
+        /// <summary>
+        /// Тестовый метод преоброзования строки в картинку
+        /// </summary>
+        /// <param name="sImageText">Строка</param>
+        /// <returns></returns>
+        public Bitmap CreateBitmapImage(string sImageText)
+        {
+            Bitmap objBmpImage = new Bitmap(1, 1);
+
+            int intWidth = 0;
+            int intHeight = 0;
+
+            // Create the Font object for the image text drawing.
+            Font objFont = new Font("Arial", 20, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+
+            // Create a graphics object to measure the text width and height.
+            Graphics objGraphics = Graphics.FromImage(objBmpImage);
+
+            // This is where the bitmap size is determined.
+            intWidth = (int)objGraphics.MeasureString(sImageText, objFont).Width;
+            intHeight = (int)objGraphics.MeasureString(sImageText, objFont).Height;
+
+            // Create the bmpImage again with the correct size for the text and font.
+            objBmpImage = new Bitmap(objBmpImage, new Size(intWidth, intHeight));
+
+            // Add the colors to the new bitmap.
+            objGraphics = Graphics.FromImage(objBmpImage);
+
+            // Set Background color
+            objGraphics.Clear(Color.White);
+            // objGraphics.SmoothingMode = SmoothingMode.AntiAlias;
+            // objGraphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+            objGraphics.DrawString(sImageText, objFont, new SolidBrush(Color.FromArgb(102, 102, 102)), 0, 0);
+            objGraphics.Flush();
+
+            return (objBmpImage);
         }
+
+
+        #region Тестовой метод проверки обновления
+        ///// <summary>
+        ///// ****
+        ///// </summary>
+        ///// <returns></returns>
+        ////Тестовой метод проверки обновления
+        //public bool Сheck()
+        //{
+        //   // VersionChecker verChecker = new VersionChecker();
+        //    string s = "";
+        //    string localVersion = "";
+        //    try
+        //    {
+        //        while (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable()) //ждем пока подрубимся к сети
+        //        {
+        //            System.Threading.Thread.Sleep(60000);
+        //        }
+        //        localVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); //получение версии запущенной программы
+        //        WebClient w = new WebClient();
+        //        s = w.DownloadString("http:// domen.ru/version.txt");
+        //        w.Dispose();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //       // errors(ex.Message);
+        //    }
+        //    string[] q = s.Split(‘|’); // у меня в файле указана не только версия, но и адрес для загрузки последней версии программы через знак ‘|’
+        //    //if (verChecker.NewVersionExists(localVersion, q[0])) // отправляем две версии другому методу для их сверки
+        //    //{
+        //    //    load_obnovlenie(q[1]); //версия старая и запускаем метод по обновлению нашей программы(будет в следующей статье)
+        //    //}
+        //    else
+        //    {
+        //        return false; //версия новая
+        //    }
+        //    return true; //даем знать основной команде, которая вызвала метод, что мол, есть обнова и лучше нам пока не начинать работать
+        //}
+        #endregion
+
+    }
     
 }
 

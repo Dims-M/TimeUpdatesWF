@@ -231,14 +231,20 @@ namespace TimeUpdatesWF
             // runWiFiPoint.RunCdmComand();// запуск точки доступа
             //  servis.StartUptadeApp(); //Распаковка скаченой версии обновленной версии
 
-              servis.StartBatDelete(); // удаление старой папки с программой
+            //  servis.StartBatDelete(); // удаление старой папки с программой 
              // servis.DeleteSelf();
 
             // testJobJson.SaveDanni();  // запуск процесса сохранения(сеарилизация) настроек в Json
             //  testJobJson.ReadingSettngsJson();  // запуск скачивания настроек в Json с сайта
 
-            TestJobJson testJobJson = new TestJobJson();
+            TestJobJson testJobJson = new TestJobJson(); // сеарилизация
             // servis.GetFailSite();
+
+            TestrForm1 testrForm1 = new TestrForm1();
+            testrForm1.Show();
+            
+
+
         }
 
         //Кнопка настройки работы с точкой доступа
