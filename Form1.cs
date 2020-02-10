@@ -189,7 +189,7 @@ namespace TimeUpdatesWF
             }
 
             else
-            MessageBox.Show("Обновление скачено! Находится в папке Документы");
+            MessageBox.Show("Обновление скачено! Находится в папке c с программой UtilKKM-Servis");
             servis.WrateText($"{DateTime.Now}\t\n Обновление скачено!");
           //  пппп
             servis.StartUptadeApp();
